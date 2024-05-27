@@ -1,4 +1,6 @@
-baseurl = "https://calebrose.io/simfba-logo-cdn/logos";
+baseurl = "https://calebrose.io/simfba-logo-cdn/logos"
+announcer_url = "https://calebrose.io/simfba-logo-cdn/announcers_ds"
+icon_url = "https://calebrose.io/simfba-logo-cdn/icons"
 
 logo_book = {
   'Abilene_Christian': f"{baseurl}/Abilene_Christian_Wildcats_logo.png",
@@ -511,4 +513,32 @@ logo_book = {
   'Eastern': f'{baseurl}/Eastern_Conference_SimNBA_logo.png',
   'Western': f'{baseurl}/Western_Conference_SimNBA_logo.png',
   'ISL': f'{baseurl}/ISL_LOGO.png',
+}
+
+announcer_book = {
+    'AK-T-Y4M4': f"{announcer_url}/ak_t-y4m4_announcer.png",
+    'Bill Kirksby':f"{announcer_url}/bill_kirksby_announcer.jpg",
+    'Bread Man':f"{announcer_url}/bread_man.jpg",
+    'Captain Jonas': f"{announcer_url}/captain_jonas_brighton_announcer.png",
+    'Craig Newton': f"{announcer_url}/craig_newton_announcer.jpg",
+    'Dante the Bison': f"{announcer_url}/dante_the_bison.jpg",
+    'Holly Park': f"{announcer_url}/holly_parker_sports_announcer.jpg",
+    'J-M-988': f"{announcer_url}/j_m_988_announcer.png",
+    'Leftenant Amy Cross': f"{announcer_url}/leftenant_amy_cross.png",
+    'Phil Mattenborough': f"{announcer_url}/phil_mattenborough_announcer.jpg",
+    'Slippery Jim': f"{announcer_url}/slippery_jim_announcer.jpg",
+    'Terry Ross': f"{announcer_url}/terry_ross_announcer.png",
+    'Toucan': f"{announcer_url}/toucan_announcer.jpg",
+    'Mad Dog Howard': f"{announcer_url}/mad_dog_howard_announcer.png",
+    'Sage Bow': f"{announcer_url}/SageBow.jpeg",
+    'Corn': f"{announcer_url}/Corn.png",
+    'Jack Stallions': f"{announcer_url}/JackStallions.jpg",
+    'Matt Payme': f"{announcer_url}/MattPayme.png",
+    'MrManul': f"{announcer_url}/MrManul.png",
+    'Versace': f"{announcer_url}/VersaceMainLaFleur.jpeg",
+}
+
+icon_book = {
+    "Penalty":f"{icon_url}/referee_icon.png",
+    "Injury":f"{icon_url}/injury_icon.png"
 }
