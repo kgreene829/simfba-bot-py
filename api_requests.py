@@ -2,6 +2,7 @@ import requests
 import json
 
 fba_url = "https://simfba.azurewebsites.net/"
+test_url = "http://localhost:5001/"
 bba_url = "https://simnba.azurewebsites.net/"
 
 def GetCollegeBasketballTeam(id):
@@ -24,6 +25,12 @@ def GetAllCBBMatches():
 
 def GetCollegeFootballPlayer(id):
     res = requests.get(f"{fba_url}ds/cfb/player/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNFLFootballPlayer(id):
+    res = requests.get(f"{fba_url}ds/nfl/player/{id}")
     if res.status_code == 200:
         return res.json()
     return False
@@ -64,10 +71,30 @@ def GetCollegeFootballTeam(id):
         return res.json()
     return False
 
-
-
 def CompareTwoCFBTeams(t1, t2):
     res = requests.get(f"{fba_url}ds/cfb/flex/{t1}/{t2}")
     if res.status_code == 200:
         return res.json()
+    return False
+
+def StreamFootballGames(league, timeslot, week, isNFL):
+    req_url = ""
+    if isNFL == False:
+        req_url = f"{fba_url}ds/cfb/{league}/stream/{timeslot}/{week}/"
+    else:
+        req_url = f"{fba_url}ds/nfl/league/stream/{timeslot}/{week}/"
+    res = requests.get(f"{req_url}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def RegisterFBTeam(isNFL, team_id, user):
+    req_url = ""
+    if isNFL == False:
+        req_url = f"{fba_url}ds/cfb/assign/discord/{team_id}/{user}"
+    else:
+        req_url = f"{fba_url}ds/nfl/assign/discord/{team_id}/{user}"
+    res = requests.get(f"{req_url}")
+    if res.status_code == 200:
+        return True
     return False

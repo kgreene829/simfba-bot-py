@@ -444,7 +444,7 @@ def GetPriorityFields(data):
         })
     attrList.append({
           "name": "Potential",
-          "value": data['OverallGrade'],
+          "value": data['PotentialGrade'],
           "inline": True,
         })
     attrList.append({
