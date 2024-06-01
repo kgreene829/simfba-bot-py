@@ -9,9 +9,10 @@ class cbb_team(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     @app_commands.command(name="cbb_team", description="Look up a college basketball team")
-    async def cbb_team(self, interaction: discord.Integration, input: str):
-        team_id = id_util.GetCollegeBasketballTeamID(input)
-        logo_url = logos_util.GetLogo(input)
+    async def cbb_team(self, interaction: discord.Integration, abbr: str):
+        upper_input = abbr.upper()
+        team_id = id_util.GetCollegeBasketballTeamID(upper_input)
+        logo_url = logos_util.GetLogo(upper_input)
         data = api_requests.GetCollegeBasketballTeam(team_id)
         if data == False:
             await interaction.response.send_message(f"Could not find team based on the provided abbreviaton: {input}")
@@ -20,7 +21,7 @@ class cbb_team(commands.Cog):
             standings = data["TeamStandings"]
             matches = data["UpcomingMatches"]
             title = f"{team_data['Team']} {team_data['Nickname']}"
-            desc = f"University based in {team_data['City']}, {team_data['State']}. Players in the {team_data['Conference']}."
+            desc = f"University based in {team_data['City']}, {team_data['State']}. Members of the {team_data['Conference']}."
             embed = discord.Embed(colour=discord.Colour.orange(),
                                 description=desc,
                                 title=title)

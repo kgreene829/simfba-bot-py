@@ -9,10 +9,10 @@ class cfb_team(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     @app_commands.command(name="cfb_team", description="Look up a college football team")
-    async def cfb_team(self, interaction: discord.Interaction, input: str):
-        upper_input = input.upper()
+    async def cfb_team(self, interaction: discord.Interaction, abbr: str):
+        upper_input = abbr.upper()
         team_id = id_util.GetCollegeFootballTeamID(upper_input)
-        logo_url = logos_util.GetLogo(input)
+        logo_url = logos_util.GetLogo(upper_input)
         data = api_requests.GetCollegeFootballTeam(team_id)
         if data == False:
             await interaction.response.send_message(f"Could not find team based on the provided abbreviaton: {input}")
@@ -25,7 +25,7 @@ class cfb_team(commands.Cog):
             if rank > 0:
                 rank_label = f"({rank})"
             title = f"{rank_label} {team_data['TeamName']} {team_data['Mascot']}"
-            desc = f"University based in {team_data['City']}, {team_data['State']}. Players in the {team_data['Conference']}."
+            desc = f"University based in {team_data['City']}, {team_data['State']}. Members of the {team_data['Conference']}."
             embed = discord.Embed(colour=discord.Colour.dark_gold(),
                                 description=desc,
                                 title=title)
@@ -57,7 +57,7 @@ class cfb_team(commands.Cog):
                     if is_complete == True:
                         match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
                     else:
-                        match_description = f"{m['Week']}{m['TimeSlot']}"
+                        match_description = f"{m['Week']} {m['TimeSlot']} "
                     if m['IsNeutral'] == True:
                         neutral_label = 'Neutral Site '
                     if m['IsConference'] == True:
@@ -88,6 +88,6 @@ class cfb_team(commands.Cog):
             
             embed.set_thumbnail(url=logo_url)
             await interaction.response.send_message(embed=embed)
-
+            
 async def setup(client: commands.Bot):
     await client.add_cog(cfb_team(client))
