@@ -12,7 +12,31 @@ def GetCollegeBasketballTeam(id):
     return False
 
 def GetCollegeBasketballPlayer(first_name, last_name, id):
-    res = requests.get(f"{bba_url}dis/cbb/player/{first_name}/{last_name}/{id}")
+    res = requests.get(f"{bba_url}dis/cbb/player/name/{first_name}/{last_name}/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetCollegeBasketballPlayer_id(id):
+    res = requests.get(f"{bba_url}dis/cbb/player/id/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNBABasketballPlayer_id(id):
+    res = requests.get(f"{bba_url}dis/nba/player/id/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNBABasketballTeam(id):
+    res = requests.get(f"{bba_url}dis/nba/team/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNBABasketballPlayer(first_name, last_name, id):
+    res = requests.get(f"{bba_url}dis/nba/player/name/{first_name}/{last_name}/{id}")
     if res.status_code == 200:
         return res.json()
     return False
@@ -23,26 +47,38 @@ def GetAllCBBMatches():
         return res.json()
     return False
 
-def GetCollegeFootballPlayer(id):
-    res = requests.get(f"{fba_url}ds/cfb/player/{id}")
+def GetCollegeFootballPlayer(first_name, last_name, id):
+    res = requests.get(f"{fba_url}ds/cfb/player/name/{first_name}/{last_name}/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
-def GetNFLFootballPlayer(id):
-    res = requests.get(f"{fba_url}ds/nfl/player/{id}")
+def GetCollegeFootballPlayer_id(id):
+    res = requests.get(f"{fba_url}ds/cfb/player/id/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
-def GetCollegeFootballPlayerIndStats(id, week):
-    res = requests.get(f"{fba_url}ds/cfb/player/indstats/{id}/{week}")
+def GetNFLFootballPlayer(first_name, last_name, id):
+    res = requests.get(f"{fba_url}ds/nfl/player/name/{first_name}/{last_name}/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
-def GetCollegeFootballPlayerSeasonStats(id):
-    res = requests.get(f"{fba_url}ds/cfb/player/seasonsstats/{id}")
+def GetNFLFootballPlayer_id(id):
+    res = requests.get(f"{fba_url}ds/nfl/player/id/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetCollegeFootballPlayerIndStats(first_name, last_name, id, week):
+    res = requests.get(f"{fba_url}ds/cfb/player/indstats/{first_name}/{last_name}/{id}/{week}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetCollegeFootballPlayerSeasonStats(first_name, last_name, id):
+    res = requests.get(f"{fba_url}ds/cfb/player/seasonsstats/{first_name}/{last_name}/{id}")
     if res.status_code == 200:
         return res.json()
     return False
@@ -73,6 +109,30 @@ def GetCollegeFootballTeam(id):
 
 def CompareTwoCFBTeams(t1, t2):
     res = requests.get(f"{fba_url}ds/cfb/flex/{t1}/{t2}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNFLFootballConfStandings(id):
+    res = requests.get(f"{fba_url}ds/nfl/conference/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNFLFootballDiviStandings(id):
+    res = requests.get(f"{fba_url}ds/nfl/division/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNFLFootballTeam(id):
+    res = requests.get(f"{fba_url}teams/nfl/roster/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def CompareTwoNFLTeams(t1, t2):
+    res = requests.get(f"{fba_url}ds/nfl/flex/{t1}/{t2}")
     if res.status_code == 200:
         return res.json()
     return False
