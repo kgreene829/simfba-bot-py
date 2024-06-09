@@ -19,7 +19,7 @@ class cbb_player_id_attributes(commands.Cog):
                     location = data['State']
                 else:
                     location = data['Country']
-                title = f"{data['FirstName']} {data['LastName']}"
+                title = f"{data['FirstName']} {data['LastName']} {str(id)}"
                 desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {location}"
                 logo_url = logos_util.GetLogo(data['TeamAbbr'])
 

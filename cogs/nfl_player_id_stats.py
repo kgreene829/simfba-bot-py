@@ -18,10 +18,10 @@ class nfl_player_id_stats(commands.Cog):
             else:
                 player = data["Player"]
                 stats = data["NFLStats"]
-                title = f"{player['FirstName']} {player['LastName']}"
+                title = f"{player['FirstName']} {player['LastName']} {str(id)}"
                 desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
                 attrlist = player_builder.GetPriorityFields(player)
-                logo_url = logos_util.GetNFLLogo(player['Team'])
+                logo_url = logos_util.GetLogo(player['Team'])
                 embed_player = discord.Embed(colour=discord.Colour.gold(),
                                     description=desc,
                                     title=title)
@@ -94,6 +94,9 @@ class nfl_player_id_stats(commands.Cog):
                         embed_player.add_field(name="Grs. Punt Distance", value=stats["GrossPuntDistance"])
                         embed_player.add_field(name="Punt Touchbacks", value=stats["PuntTouchbacks"])
                         embed_player.add_field(name="Inside 20", value=stats["PuntsInside20"])
+
+                else:
+                    embed_player.add_field(name="Stats work best on players who have actually played games")
 
                 embed_player.set_thumbnail(url=logo_url)
                 embed_player.set_footer(text="SimFBA Association")

@@ -21,8 +21,11 @@ class cfb_player_name_attributes(commands.Cog):
             else:
                 player = data["Player"]
                 stats = data["CollegeStats"]
-                title = f"{player['FirstName']} {player['LastName']}"
-                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']},{player['State']}"
+                if stats["ID"] > 0:
+                    title = f"{player['FirstName']} {player['LastName']} {stats['CollegePlayerID']}"
+                else:
+                    title = f"{player['FirstName']} {player['LastName']}"
+                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']}, {player['State']}"
                 attrlist = player_builder.GetPriorityFields(player)
                 logo_url = logos_util.GetLogo(player['Team'])
                 embed_player = discord.Embed(colour=discord.Colour.gold(),

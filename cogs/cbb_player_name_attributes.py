@@ -9,7 +9,7 @@ class cbb_player_name_attributes(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     @app_commands.command(name="cbb_player_name_attributes", description="Look up a college basketball player using a {first name}, {last name}, and {team abbreviation}")
-    async def cbb_player_name_attributes(self, interaction: discord.Interaction, id: str):
+    async def cbb_player_name_attributes(self, interaction: discord.Interaction, first_name: str, last_name: str, team_abbreviation: str):
             team_abbreviation = team_abbreviation.upper()
             team_id = id_util.GetCollegeBasketballTeamID(team_abbreviation)
             logo_url = logos_util.GetLogo(team_abbreviation)
@@ -22,7 +22,8 @@ class cbb_player_name_attributes(commands.Cog):
                     location = data['State']
                 else:
                     location = data['Country']
-                title = f"{data['FirstName']} {data['LastName']}"
+                stats = data["SeasonStats"]
+                title = f"{data['FirstName']} {data['LastName']} {data['PlayerID']}"
                 desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {location}"
                 logo_url = logos_util.GetLogo(data['TeamAbbr'])
 

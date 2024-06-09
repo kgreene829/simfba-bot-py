@@ -18,8 +18,8 @@ class cfb_player_id_stats(commands.Cog):
             else:
                 player = data["Player"]
                 stats = data["CollegeStats"]
-                title = f"{player['FirstName']} {player['LastName']}"
-                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']},{player['State']}"
+                title = f"{player['FirstName']} {player['LastName']} {str(id)}"
+                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']}, {player['State']}"
                 attrlist = player_builder.GetPriorityFields(player)
                 logo_url = logos_util.GetLogo(player['Team'])
                 embed_player = discord.Embed(colour=discord.Colour.gold(),
@@ -93,6 +93,8 @@ class cfb_player_id_stats(commands.Cog):
                         embed_player.add_field(name="Grs. Punt Distance", value=stats["GrossPuntDistance"])
                         embed_player.add_field(name="Punt Touchbacks", value=stats["PuntTouchbacks"])
                         embed_player.add_field(name="Inside 20", value=stats["PuntsInside20"])
+                else:
+                        embed_player.add_field(name="",value="Stats work best on players who have actually played games")
 
                 embed_player.set_thumbnail(url=logo_url)
                 embed_player.set_footer(text="SimFBA Association")

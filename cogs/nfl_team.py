@@ -9,8 +9,8 @@ class nfl_team(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     @app_commands.command(name="nfl_team", description="Look up a professional football team")
-    async def nfl_team(self, interaction: discord.Interaction, input: str):
-        upper_input = input.upper()
+    async def nfl_team(self, interaction: discord.Interaction, abbr: str):
+        upper_input = abbr.upper()
         team_id = id_util.GetNFLTeamID(upper_input)
         logo_url = logos_util.GetNFLLogo(upper_input)
         data = api_requests.GetNFLFootballTeam(team_id)

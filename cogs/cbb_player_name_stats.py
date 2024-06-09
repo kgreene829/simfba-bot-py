@@ -23,7 +23,7 @@ class cbb_player_name_stats(commands.Cog):
                 else:
                     location = data['Country']
                 stats = data["SeasonStats"]
-                title = f"{data['FirstName']} {data['LastName']}"
+                title = f"{data['FirstName']} {data['LastName']} {data['PlayerID']}"
                 desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {location}"
 
                 embed = discord.Embed(colour=discord.Colour.orange(),

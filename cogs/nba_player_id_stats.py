@@ -15,11 +15,10 @@ class nba_player_id_stats(commands.Cog):
             if data == False:
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
-                player = data
                 stats = data["SeasonStats"]
-                title = f"{data['FirstName']} {data['LastName']}"
-                desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
-                logo_url = logos_util.GetNBALogo(player['TeamAbbr'])
+                title = f"{data['FirstName']} {data['LastName']} {str(id)}"
+                desc = f"{data['Year']} year veteran {data['Archetype']} {data['Position']} Graduated from {data['College']}"
+                logo_url = logos_util.GetNBALogo(data['TeamAbbr'])
                 embed = discord.Embed(colour=discord.Colour.orange(),
                                 description=desc,
                                 title=title)
