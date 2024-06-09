@@ -9,10 +9,10 @@ class nba_team(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     @app_commands.command(name="nba_team", description="Look up a professional basketball team")
-    async def nba_team(self, interaction: discord.Interaction, abbr: str):
-        upper_input = abbr.upper()
+    async def nba_team(self, interaction: discord.Interaction, team: str):
+        upper_input = team.upper()
         team_id = id_util.GetNBATeamID(upper_input)
-        logo_url = logos_util.GetNBALogo(upper_input)
+        logo_url = logos_util.GetNBALogo(team_id)
         data = api_requests.GetNBABasketballTeam(team_id)
         if data == False:
             await interaction.response.send_message(f"Could not find team based on the provided abbreviaton: {input}")
