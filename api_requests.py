@@ -42,7 +42,7 @@ def GetNBABasketballPlayer(first_name, last_name, id):
     return False
 
 def CompareTwoNBATeams(t1, t2):
-    res = requests.get(f"{bba_url}dis/nba/flex/{t1}/{t2}")
+    res = requests.get(f"{bba_url}ds/nba/flex/{t1}/{t2}")
     if res.status_code == 200:
         return res.json()
     return False
@@ -54,7 +54,7 @@ def GetAllCBBMatches():
     return False
 
 def CompareTwoCBBTeams(t1, t2):
-    res = requests.get(f"{bba_url}dis/cbb/flex/{t1}/{t2}")
+    res = requests.get(f"{bba_url}ds/cbb/flex/{t1}/{t2}")
     if res.status_code == 200:
         return res.json()
     return False
