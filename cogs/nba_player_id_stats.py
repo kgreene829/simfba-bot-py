@@ -18,7 +18,8 @@ class nba_player_id_stats(commands.Cog):
                 stats = data["SeasonStats"]
                 title = f"{data['FirstName']} {data['LastName']} {str(id)}"
                 desc = f"{data['Year']} year veteran {data['Archetype']} {data['Position']} Graduated from {data['College']}"
-                logo_url = logos_util.GetNBALogo(data['TeamAbbr'])
+                team_id = id_util.GetNBATeamID(data['TeamAbbr'].upper())
+                logo_url = logos_util.GetNBALogo(team_id)
                 embed = discord.Embed(colour=discord.Colour.orange(),
                                 description=desc,
                                 title=title)

@@ -21,7 +21,8 @@ class nfl_player_id_stats(commands.Cog):
                 title = f"{player['FirstName']} {player['LastName']} {str(id)}"
                 desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
                 attrlist = player_builder.GetPriorityFields(player)
-                logo_url = logos_util.GetLogo(player['Team'])
+                team_id = id_util.GetNFLTeamID(player['Team'].upper())
+                logo_url = logos_util.GetNFLLogo(team_id)
                 embed_player = discord.Embed(colour=discord.Colour.gold(),
                                     description=desc,
                                     title=title)

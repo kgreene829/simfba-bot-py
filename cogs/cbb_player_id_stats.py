@@ -22,7 +22,8 @@ class cbb_player_id_stats(commands.Cog):
                 stats = data["SeasonStats"]
                 title = f"{data['FirstName']} {data['LastName']} {str(id)}"
                 desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {location}"
-                logo_url = logos_util.GetLogo(data['TeamAbbr'])
+                team_id = id_util.GetCollegeBasketballTeamID(data['TeamAbbr'].upper())
+                logo_url = logos_util.GetCBBLogo(team_id)
 
                 embed = discord.Embed(colour=discord.Colour.orange(),
                                     description=desc,

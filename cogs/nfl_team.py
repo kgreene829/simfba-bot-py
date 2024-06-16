@@ -15,7 +15,7 @@ class nfl_team(commands.Cog):
         logo_url = logos_util.GetNFLLogo(team_id)
         data = api_requests.GetNFLFootballTeam(team_id)
         if data == False:
-            await interaction.response.send_message(f"Could not find team based on the provided abbreviaton: {input}")
+            await interaction.response.send_message(f"Could not find team based on the provided team: {input}")
         else:
             team_data = data["Team"]
             title = f"{team_data['TeamName']} {team_data['Mascot']}"

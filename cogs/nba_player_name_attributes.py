@@ -8,12 +8,12 @@ import api_requests
 class nba_player_name_attributes(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="nba_player_name_attributes", description="Look up a profesional basketball player using a {first name}, {last name}, and {team abbreviation}")
-    async def nfl_player_name_attributes(self, interaction: discord.Interaction, first_name: str, last_name: str, team_abbreviation: str):
-        team_abbreviation = team_abbreviation.upper()
+    @app_commands.command(name="nba_player_name_attributes", description="Look up a profesional basketball player using a {first name}, {last name}, and {team}")
+    async def nfl_player_name_attributes(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
+        team_abbreviation = team.upper()
         try:
             team_id = id_util.GetNBATeamID(team_abbreviation)
-            logo_url = logos_util.GetNBALogo(team_abbreviation)
+            logo_url = logos_util.GetNBALogo(team_id)
             data = api_requests.GetNBABasketballPlayer(first_name, last_name, team_id)
             if data == False:
                 await interaction.response.send_message(f"Could not find player")
@@ -25,6 +25,9 @@ class nba_player_name_attributes(commands.Cog):
                                     title=title)
 
                 # Player Attribute Embeds
+                embed.add_field(name="Overall", value=data['Overall'], inline=True)
+                embed.add_field(name="Experience", value=data['Year'], inline=True)
+                embed.add_field(name="Position", value=data['Position'], inline=True)
                 embed.add_field(name="Inside Shooting", value=data['Finishing'], inline=True)
                 embed.add_field(name="MidRange Shooting", value=data['Shooting2'], inline=True)
                 embed.add_field(name="3pt Shooting", value=data['Shooting3'], inline=True)

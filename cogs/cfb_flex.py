@@ -8,16 +8,18 @@ import api_requests
 class cfb_flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_flex", description="Compare the wins between two CFB Programs. Input two {abbreviations}")
+    @app_commands.command(name="cfb_flex", description="Compare the wins between two CFB Programs. Input two {teams}")
     async def cfb_flex(self, interaction: discord.Integration, t1: str, t2: str):
-        team_one_id = id_util.GetCollegeFootballTeamID(t1)
-        team_two_id = id_util.GetCollegeFootballTeamID(t2)
+        t1_upper = t1.upper()
+        t2_upper = t2.upper()
+        team_one_id = id_util.GetCollegeFootballTeamID(t1_upper)
+        team_two_id = id_util.GetCollegeFootballTeamID(t2_upper)
         data = api_requests.CompareTwoCFBTeams(team_one_id, team_two_id)
         if data == False:
-            await interaction.response.send_message(f"Could not find team based on the provided abbreviatons: {t1} {t2}")
+            await interaction.response.send_message(f"Could not find team based on the provided teams: {t1} {t2}")
         else:
             latest_win = data["LatestWin"]
-            latest_win_url = logos_util.GetLogo(latest_win)
+            latest_win_url = logos_util.GetCFBLogo(latest_win)
             current_streak = data["CurrentStreak"]
             team_one_wins = data["TeamOneWins"]
             team_one_losses = data["TeamOneLosses"]

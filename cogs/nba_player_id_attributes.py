@@ -16,13 +16,17 @@ class nba_player_id_attributes(commands.Cog):
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
                 title = f"{data['FirstName']} {data['LastName']} {str(id)}"
-                desc = f"{data['Year']} year veteran {data['Archetype']} {data['Position']} Graduated from {data['College']}"
-                logo_url = logos_util.GetNBALogo(data['TeamAbbr'])
+                desc = f"Graduated from {data['College']}"
+                team_id = id_util.GetNBATeamID(data['TeamAbbr'].upper())
+                logo_url = logos_util.GetNBALogo(team_id)
                 embed = discord.Embed(colour=discord.Colour.orange(),
                                 description=desc,
                                 title=title)
 
                 # Player Attribute Embeds
+                embed.add_field(name="Overall", value=data['Overall'], inline=True)
+                embed.add_field(name="Experience", value=data['Year'], inline=True)
+                embed.add_field(name="Position", value=data['Position'], inline=True)
                 embed.add_field(name="Inside Shooting", value=data['Finishing'], inline=True)
                 embed.add_field(name="MidRange Shooting", value=data['Shooting2'], inline=True)
                 embed.add_field(name="3pt Shooting", value=data['Shooting3'], inline=True)

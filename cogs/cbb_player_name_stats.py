@@ -8,11 +8,11 @@ import api_requests
 class cbb_player_name_stats(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cbb_player_name_stats", description="Look up a college basketball player using a {first name}, {last name}, and {team abbreviation}")
-    async def cbb_player_name__stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team_abbreviation: str):
-            team_abbreviation = team_abbreviation.upper()
+    @app_commands.command(name="cbb_player_name_stats", description="Look up a college basketball player using a {first name}, {last name}, and {team}")
+    async def cbb_player_name__stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
+            team_abbreviation = team.upper()
             team_id = id_util.GetCollegeBasketballTeamID(team_abbreviation)
-            logo_url = logos_util.GetLogo(team_abbreviation)
+            logo_url = logos_util.GetCBBLogo(team_id)
             data = api_requests.GetCollegeBasketballPlayer(first_name, last_name, team_id)
             if data == False:
                 await interaction.response.send_message(f"Could not find player")

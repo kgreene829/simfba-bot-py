@@ -12,7 +12,7 @@ class cfb_team(commands.Cog):
     async def cfb_team(self, interaction: discord.Interaction, team: str):
         upper_input = team.upper()
         team_id = id_util.GetCollegeFootballTeamID(upper_input)
-        logo_url = logos_util.GetLogo(team_id)
+        logo_url = logos_util.GetCFBLogo(team_id)
         data = api_requests.GetCollegeFootballTeam(team_id)
         if data == False:
             await interaction.response.send_message(f"Could not find team based on the provided abbreviaton: {input}")

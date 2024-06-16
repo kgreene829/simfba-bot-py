@@ -8,7 +8,7 @@ import api_requests
 class cbb_flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cbb_flex", description="Compare the wins between two cbb Programs. Input two {abbreviations}")
+    @app_commands.command(name="cbb_flex", description="Compare the wins between two cbb Programs. Input two {teams}")
     async def cbb_flex(self, interaction: discord.Integration, t1: str, t2: str):
         t1_upper = t1.upper()
         t2_upper = t2.upper()
@@ -16,10 +16,10 @@ class cbb_flex(commands.Cog):
         team_two_id = id_util.GetCollegeBasketballTeamID(t2_upper)
         data = api_requests.CompareTwoCBBTeams(team_one_id, team_two_id)
         if data == False:
-            await interaction.response.send_message(f"Could not find team based on the provided abbreviatons: {t1} {t2}")
+            await interaction.response.send_message(f"Could not find team based on the provided teams: {t1} {t2}")
         else:
             latest_win = data["LatestWin"]
-            latest_win_url = logos_util.GetLogo(latest_win)
+            latest_win_url = logos_util.GetCBBLogo(latest_win)
             current_streak = data["CurrentStreak"]
             team_one_wins = data["TeamOneWins"]
             team_one_losses = data["TeamOneLosses"]
