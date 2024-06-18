@@ -19,7 +19,8 @@ class cfb_flex(commands.Cog):
             await interaction.response.send_message(f"Could not find team based on the provided teams: {t1} {t2}")
         else:
             latest_win = data["LatestWin"]
-            latest_win_url = logos_util.GetCFBLogo(latest_win)
+            team_id = id_util.GetCollegeFootballTeamID(data["LatestWin"].upper())
+            latest_win_url = logos_util.GetCFBLogo(team_id)
             current_streak = data["CurrentStreak"]
             team_one_wins = data["TeamOneWins"]
             team_one_losses = data["TeamOneLosses"]
