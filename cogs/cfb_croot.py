@@ -21,7 +21,14 @@ class cfb_croot(commands.Cog):
                 desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}"
                 team_id = id_util.GetCollegeFootballTeamID(data["College"].upper())
                 logo_url = logos_util.GetCFBLogo(team_id)
-                embed = discord.Embed(colour=discord.Colour.gold(),
+                team = api_requests.GetCollegeFootballTeam(team_id)
+                if team_id != "/":
+                    color = team["TeamData"]
+                    embed = discord.Embed(colour=discord.Colour.from_str(color["ColorOne"]),
+                                    description=desc,
+                                    title=title)
+                else:
+                    embed = discord.Embed(colour=discord.Colour.dark_gold(),
                                     description=desc,
                                     title=title)
                 embed.add_field(name="Overall", value=data["OverallGrade"], inline=True)
@@ -35,12 +42,26 @@ class cfb_croot(commands.Cog):
                 embed.add_field(name="Leading Teams", value="", inline=False)
                 leading_teams = data["LeadingTeams"]
                 a = 0
-                
-                for i in leading_teams:
-                    if leading_teams[a]["Odds"] > 0:
-                        embed.add_field(name=leading_teams[a]["TeamAbbr"], value=f"Odds {round(leading_teams[a]['Odds']*100,2)}%", inline=True)
-                        
-                    a += 1
+
+                if data['IsSigned'] == True:
+                    for i in leading_teams:
+                        if leading_teams[a]["Odds"] > 0:
+                            embed.add_field(name=leading_teams[a]["TeamAbbr"], value=f"Odds {round(leading_teams[a]['Odds']*100,2)}%", inline=True)
+                        a += 1
+                else:
+                    for i in leading_teams:
+                        if leading_teams[a]["Odds"] > 0:
+                           odds = round(leading_teams[a]["Odds"]*100,2)
+                           if odds > 45:
+                               embed.add_field(name=leading_teams[a]["TeamAbbr"], value="Strong Favorite", inline=True)
+                           elif odds > 24:
+                               embed.add_field(name=leading_teams[a]["TeamAbbr"], value="In Contention", inline=True)
+                           elif odds > 11:
+                               embed.add_field(name=leading_teams[a]["TeamAbbr"], value="Just Outside", inline=True)
+                           else:
+                               embed.add_field(name=leading_teams[a]["TeamAbbr"], value="Unlikely", inline=True)
+                        a += 1
+
 
                 embed.set_thumbnail(url=logo_url)
                 embed.set_footer(text="SimFBA Association")
