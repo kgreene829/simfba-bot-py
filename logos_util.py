@@ -1407,7 +1407,7 @@ def GetNBALogo(team):
         return logos.logo_book["Perth"]
     elif team == 72:
         return logos.logo_book["NewZealand"]
-    elif team == 73:
+'''    elif team == 73:
         return logos.logo_book["Fujian"]
     elif team == 74:
         return logos.logo_book["SouthChina"]
@@ -1654,7 +1654,7 @@ def GetNBALogo(team):
     elif team == "Eastern All Stars":
         return logos.logo_book["Eastern"]
     elif team == "Eastern Rising Stars":
-        return logos.logo_book["Eastern"]
+        return logos.logo_book["Eastern"]'''
     else:
         return ""
   
