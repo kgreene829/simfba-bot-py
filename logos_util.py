@@ -1407,7 +1407,7 @@ def GetNBALogo(team):
         return logos.logo_book["Perth"]
     elif team == 72:
         return logos.logo_book["NewZealand"]
-'''    elif team == 73:
+    elif team == 73:
         return logos.logo_book["Fujian"]
     elif team == 74:
         return logos.logo_book["SouthChina"]
@@ -1418,7 +1418,7 @@ def GetNBALogo(team):
     elif team == 77:
         return logos.logo_book["Vladivostok"]
     elif team == 78:
-        return logos.logo_book["DaeguKogas"]
+        return logos.logo_book["Daegu"]
     elif team == 79:
         return logos.logo_book["Ulsan"]
     elif team == 80:
@@ -1436,7 +1436,7 @@ def GetNBALogo(team):
     elif team == 86:
         return logos.logo_book["Bourg"]
     elif team == 87:
-        return logos.logo_book["Metropolitans"]
+        return logos.logo_book["Metropolitans92"]
     elif team == 88:
         return logos.logo_book["Hamburg"]
     elif team == 89:
@@ -1448,23 +1448,23 @@ def GetNBALogo(team):
     elif team == 92:
         return logos.logo_book["Alger"]
     elif team == 93:
-        return logos.logo_book["PetroLuanda"]
+        return logos.logo_book["Petro"]
     elif team == 94:
-        return logos.logo_book["FAP"]
+        return logos.logo_book["Yaounde"]
     elif team == 95:
         return logos.logo_book["EspoirFukash"]
     elif team == 96:
         return logos.logo_book["SLAC"]
     elif team == 97:
-        return logos.logo_book["ABC"]
+        return logos.logo_book["ABCFighters"]
     elif team == 98:
         return logos.logo_book["GNBC"]
     elif team == 99:
-        return logos.logo_book["Police"]
+        return logos.logo_book["ASPolice"]
     elif team == 100:
         return logos.logo_book["StadeMalien"]
     elif team == 101:
-        return logos.logo_book["Sale"]
+        return logos.logo_book["ASSale"]
     elif team == 102:
         return logos.logo_book["Beira"]
     elif team == 103:
@@ -1476,21 +1476,21 @@ def GetNBALogo(team):
     elif team == 106:
         return logos.logo_book["REG"]
     elif team == 107:
-        return logos.logo_book["Douanes"]
+        return logos.logo_book["ASDouanes"]
     elif team == 108:
         return logos.logo_book["CapeTown"]
     elif team == 109:
-        return logos.logo_book["Cobra"]
+        return logos.logo_book["CobraSport"]
     elif team == 110:
         return logos.logo_book["Monastir"]
     elif team == 111:
-        return logos.logo_book["Oilers"]
+        return logos.logo_book["CityOilers"]
     elif team == 112:
-        return logos.logo_book["Juniors"]
+        return logos.logo_book["BocaJuniors"]
     elif team == 113:
         return logos.logo_book["InstitutoACC"]
     elif team == 114:
-        return logos.logo_book["Obras"]
+        return logos.logo_book["ObrasSanitarias"]
     elif team == 115:
         return logos.logo_book["Quimsa"]
     elif team == 116:
@@ -1502,93 +1502,93 @@ def GetNBALogo(team):
     elif team == 119:
         return logos.logo_book["Minas"]
     elif team == 120:
-        return logos.logo_book["Mogi"]
+        return logos.logo_book["MogiDasCruzes"]
     elif team == 121:
         return logos.logo_book["SaoPaulo"]
     elif team == 122:
-        return logos.logo_book["Valdivia"]
+        return logos.logo_book["CDValdivia"]
     elif team == 123:
-        return logos.logo_book["Concepcion"]
+        return logos.logo_book["UniversidadConcepcion"]
     elif team == 124:
-        return logos.logo_book["Barranquilla"]
+        return logos.logo_book["Titanes"]
     elif team == 125:
-        return logos.logo_book["CapitanesDeMexico"]
+        return logos.logo_book["CapitanesDeCiudad"]
     elif team == 126:
-        return logos.logo_book["Fuerza"]
+        return logos.logo_book["FuerzaMonterrey"]
     elif team == 127:
-        return logos.logo_book["Libertadores"]
+        return logos.logo_book["LibertadoresQueretaro"]
     elif team == 128:
-        return logos.logo_book["Esteli"]
+        return logos.logo_book["RealEsteli"]
     elif team == 129:
-        return logos.logo_book["Caballos"]
+        return logos.logo_book["CaballosdeCocle"]
     elif team == 130:
-        return logos.logo_book["Cangrejeros"]
+        return logos.logo_book["CangrejerosSanturce"]
     elif team == 131:
         return logos.logo_book["Aguada"]
     elif team == 132:
-        return logos.logo_book["Balcan"]
+        return logos.logo_book["BCBalcan"]
     elif team == 133:
         return logos.logo_book["Cibona"]
     elif team == 134:
-        return logos.logo_book["Limassol"]
+        return logos.logo_book["AELLimassol"]
     elif team == 135:
-        return logos.logo_book["Apoel"]
+        return logos.logo_book["APOEL"]
     elif team == 136:
-        return logos.logo_book["Szombathely"]
+        return logos.logo_book["FalcoSzombathely"]
     elif team == 137:
-        return logos.logo_book["Jerusalem"]
+        return logos.logo_book["HapoelJerusalem"]
     elif team == 138:
         return logos.logo_book["Aquila"]
     elif team == 139:
         return logos.logo_book["Peja"]
     elif team == 140:
-        return logos.logo_book["Buducnost"]
+        return logos.logo_book["BuducnostVoli"]
     elif team == 141:
-        return logos.logo_book["Bucuresti"]
+        return logos.logo_book["DinamoBucuresti"]
     elif team == 142:
-        return logos.logo_book["Cedevita"]
+        return logos.logo_book["KKCedevita"]
     elif team == 143:
         return logos.logo_book["Bakken"]
     elif team == 144:
-        return logos.logo_book["Naestved"]
+        return logos.logo_book["FOG"]
     elif team == 145:
         return logos.logo_book["Pyrinto"]
     elif team == 146:
-        return logos.logo_book["Pojart"]
+        return logos.logo_book["TorpanPojat"]
     elif team == 147:
         return logos.logo_book["Grindavik"]
     elif team == 148:
         return logos.logo_book["IR"]
     elif team == 149:
-        return logos.logo_book["Lietkabelis"]
+        return logos.logo_book["BCLietkabelis"]
     elif team == 150:
         return logos.logo_book["Asker"]
     elif team == 151:
         return logos.logo_book["Baerum"]
     elif team == 152:
-        return logos.logo_book["Wroclaw"]
+        return logos.logo_book["SlaskWroclaw"]
     elif team == 153:
-        return logos.logo_book["Moscow"]
+        return logos.logo_book["CSKAMoscow"]
     elif team == 154:
-        return logos.logo_book["Kuban"]
+        return logos.logo_book["LokomotivKuban"]
     elif team == 155:
-        return logos.logo_book["Zenit"]
+        return logos.logo_book["ZenitSP"]
     elif team == 156:
-        return logos.logo_book["Lulea"]
+        return logos.logo_book["BCLulea"]
     elif team == 157:
         return logos.logo_book["Norrkoping"]
     elif team == 158:
-        return logos.logo_book["Budivelnyk"]
+        return logos.logo_book["BCBudivelnyk"]
     elif team == 159:
-        return logos.logo_book["Dnipro"]
+        return logos.logo_book["BCDnipro"]
     elif team == 160:
         return logos.logo_book["Tasmania"]
     elif team == 161:
-        return logos.logo_book["Lourve"]
+        return logos.logo_book["Louvre"]
     elif team == 162:
-        return logos.logo_book["Satria"]
+        return logos.logo_book["SatriaMuda"]
     elif team == 163:
-        return logos.logo_book["Kuala"]
+        return logos.logo_book["KualaLumpur"]
     elif team == 164:
         return logos.logo_book["Otago"]
     elif team == 165:
@@ -1598,55 +1598,55 @@ def GetNBALogo(team):
     elif team == 167:
         return logos.logo_book["Singapore"]
     elif team == 168:
-        return logos.logo_book["Taiwan"]
+        return logos.logo_book["TaiwanCity"]
     elif team == 169:
-        return logos.logo_book["Hi-Tech"]
+        return logos.logo_book["HiTechBangkok"]
     elif team == 170:
         return logos.logo_book["DaNang"]
     elif team == 171:
-        return logos.logo_book["Trang"]
+        return logos.logo_book["NhaTrang"]
     elif team == 172:
         return logos.logo_book["Saigon"]
     elif team == 173:
-        return logos.logo_book["Sabah"]
+        return logos.logo_book["SabahBC"]
     elif team == 174:
-        return logos.logo_book["Bahrain"]
+        return logos.logo_book["BahrainSC"]
     elif team == 175:
         return logos.logo_book["Manama"]
     elif team == 176:
-        return logos.logo_book["Ahly"]
+        return logos.logo_book["AlAhly"]
     elif team == 177:
-        return logos.logo_book["Sahour"]
+        return logos.logo_book["BeitSahour"]
     elif team == 178:
-        return logos.logo_book["Alexandria"]
+        return logos.logo_book["SportingAlexandria"]
     elif team == 179:
-        return logos.logo_book["Zamalek"]
+        return logos.logo_book["ZamalekBC"]
     elif team == 180:
-        return logos.logo_book["Mahram"]
+        return logos.logo_book["MahramTehran"]
     elif team == 181:
         return logos.logo_book["Petrochimi"]
     elif team == 182:
-        return logos.logo_book["Al-Rasheed"]
+        return logos.logo_book["AlRasheed"]
     elif team == 183:
-        return logos.logo_book["Kazma"]
+        return logos.logo_book["KazmaSC"]
     elif team == 184:
-        return logos.logo_book["Kuwait"]
+        return logos.logo_book["KuwaitSC"]
     elif team == 185:
-        return logos.logo_book["AlRiyadi"]
+        return logos.logo_book["ALRiyadi"]
     elif team == 186:
-        return logos.logo_book["Sagesse"]
+        return logos.logo_book["SagesseSC"]
     elif team == 187:
         return logos.logo_book["AlSadd"]
     elif team == 188:
         return logos.logo_book["AlNassr"]
     elif team == 189:
-        return logos.logo_book["Al-Hilal"]
+        return logos.logo_book["AlHilal"]
     elif team == 190:
-        return logos.logo_book["Al-Ittihad"]
+        return logos.logo_book["AlIttihad"]
     elif team == 191:
-        return logos.logo_book["Al-Wahda"]
+        return logos.logo_book["AlWahda"]
     elif team == 192:
-        return logos.logo_book["Shaba"]
+        return logos.logo_book["ShababAlAhli"]
     elif team == "Western All Stars":
         return logos.logo_book["Western"]
     elif team == "Western Rising Stars":
@@ -1654,7 +1654,7 @@ def GetNBALogo(team):
     elif team == "Eastern All Stars":
         return logos.logo_book["Eastern"]
     elif team == "Eastern Rising Stars":
-        return logos.logo_book["Eastern"]'''
+        return logos.logo_book["Eastern"]
     else:
         return ""
   
