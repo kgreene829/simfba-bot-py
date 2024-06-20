@@ -9,22 +9,24 @@ import api_requests
 class cfb_player_name_attributes(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_player_name_attributes", description="Look up a college football player using a {first name}, {last name}, and {team abbreviation}")
-    async def cfb_player_name_attributes(self, interaction: discord.Interaction, first_name: str, last_name: str, team_abbreviation: str):
-        team_abbreviation = team_abbreviation.upper()
+    @app_commands.command(name="cfb_player_name_attributes", description="Look up a college football player using a {first name}, {last name}, and {team}")
+    async def cfb_player_name_attributes(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
+        team_abbreviation = team.upper()
         try:
             team_id = id_util.GetCollegeFootballTeamID(team_abbreviation)
-            logo_url = logos_util.GetLogo(team_abbreviation)
+            logo_url = logos_util.GetCFBLogo(team_id)
             data = api_requests.GetCollegeFootballPlayer(first_name, last_name, team_id)
             if data == False:
                 await interaction.response.send_message(f"Could not find player")
             else:
                 player = data["Player"]
                 stats = data["CollegeStats"]
-                title = f"{player['FirstName']} {player['LastName']}"
-                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']},{player['State']}"
+                if stats["ID"] > 0:
+                    title = f"{player['FirstName']} {player['LastName']} {stats['CollegePlayerID']}"
+                else:
+                    title = f"{player['FirstName']} {player['LastName']}"
+                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']}, {player['State']}"
                 attrlist = player_builder.GetPriorityFields(player)
-                logo_url = logos_util.GetLogo(player['Team'])
                 embed_player = discord.Embed(colour=discord.Colour.gold(),
                                     description=desc,
                                     title=title)

@@ -18,10 +18,11 @@ class nfl_player_id_attributes(commands.Cog):
             else:
                 player = data["Player"]
                 stats = data["NFLStats"]
-                title = f"{player['FirstName']} {player['LastName']}"
+                title = f"{player['FirstName']} {player['LastName']} {str(id)}"
                 desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
                 attrlist = player_builder.GetPriorityFields(player)
-                logo_url = logos_util.GetNFLLogo(player['Team'])
+                team_id = id_util.GetNFLTeamID(player['Team'].upper())
+                logo_url = logos_util.GetNFLLogo(team_id)
                 embed_player = discord.Embed(colour=discord.Colour.gold(),
                                     description=desc,
                                     title=title)

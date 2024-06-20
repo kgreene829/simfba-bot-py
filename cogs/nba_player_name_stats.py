@@ -8,20 +8,19 @@ import api_requests
 class nba_player_name_stats(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="nba_player_name_stats", description="Look up a profesional basketball player using a {first name}, {last name}, and {team abbreviation}")
-    async def nfl_player_name_stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team_abbreviation: str):
-        team_abbreviation = team_abbreviation.upper()
+    @app_commands.command(name="nba_player_name_stats", description="Look up a profesional basketball player using a {first name}, {last name}, and {team}")
+    async def nfl_player_name_stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
+        team_abbreviation = team.upper()
         try:
             team_id = id_util.GetNBATeamID(team_abbreviation)
-            logo_url = logos_util.GetNBALogo(team_abbreviation)
+            logo_url = logos_util.GetNBALogo(team_id)
             data = api_requests.GetNBABasketballPlayer(first_name, last_name, team_id)
             if data == False:
                 await interaction.response.send_message(f"Could not find player")
             else:
-                player = data
                 stats = data["SeasonStats"]
-                title = f"{data['FirstName']} {data['LastName']}"
-                desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
+                title = f"{data['FirstName']} {data['LastName']} {data['PlayerID']}"
+                desc = f"{data['Year']} year veteran {data['Archetype']} {data['Position']} Graduated from {data['College']}"
                 embed = discord.Embed(colour=discord.Colour.orange(),
                                     description=desc,
                                     title=title)

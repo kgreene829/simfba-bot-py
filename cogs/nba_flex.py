@@ -5,22 +5,21 @@ import logos_util
 import id_util
 import api_requests
 
-class cfb_flex(commands.Cog):
+class nba_flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_flex", description="Compare the wins between two CFB Programs. Input two {teams}")
-    async def cfb_flex(self, interaction: discord.Integration, t1: str, t2: str):
+    @app_commands.command(name="nba_flex", description="Compare the wins between two nba teams. Input two {teams}")
+    async def nba_flex(self, interaction: discord.Integration, t1: str, t2: str):
         t1_upper = t1.upper()
         t2_upper = t2.upper()
-        team_one_id = id_util.GetCollegeFootballTeamID(t1_upper)
-        team_two_id = id_util.GetCollegeFootballTeamID(t2_upper)
-        data = api_requests.CompareTwoCFBTeams(team_one_id, team_two_id)
+        team_one_id = id_util.GetNBATeamID(t1_upper)
+        team_two_id = id_util.GetNBATeamID(t2_upper)
+        data = api_requests.CompareTwoNBATeams(team_one_id, team_two_id)
         if data == False:
             await interaction.response.send_message(f"Could not find team based on the provided teams: {t1} {t2}")
         else:
             latest_win = data["LatestWin"]
-            team_id = id_util.GetCollegeFootballTeamID(data["LatestWin"].upper())
-            latest_win_url = logos_util.GetCFBLogo(team_id)
+            latest_win_url = logos_util.GetNBALogo(latest_win)
             current_streak = data["CurrentStreak"]
             team_one_wins = data["TeamOneWins"]
             team_one_losses = data["TeamOneLosses"]
@@ -52,4 +51,4 @@ class cfb_flex(commands.Cog):
             await interaction.response.send_message(embed=embed)
 
 async def setup(client: commands.Bot):
-    await client.add_cog(cfb_flex(client))
+    await client.add_cog(nba_flex(client))

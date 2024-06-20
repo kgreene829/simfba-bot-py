@@ -9,20 +9,23 @@ import api_requests
 class cfb_player_name_stats(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_player_name_stats", description="Look up a college football player using a {first name}, {last name}, and {team abbreviation}")
-    async def cfb_player_name_stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team_abbreviation: str):
-        team_abbreviation = team_abbreviation.upper()
+    @app_commands.command(name="cfb_player_name_stats", description="Look up a college football player using a {first name}, {last name}, and {team}")
+    async def cfb_player_name_stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
+        team_abbreviation = team.upper()
         try:
             team_id = id_util.GetCollegeFootballTeamID(team_abbreviation)
-            logo_url = logos_util.GetLogo(team_abbreviation)
+            logo_url = logos_util.GetCFBLogo(team_id)
             data = api_requests.GetCollegeFootballPlayer(first_name, last_name, team_id)
             if data == False:
                 await interaction.response.send_message(f"Could not find player")
             else:
                 player = data["Player"]
                 stats = data["CollegeStats"]
-                title = f"{player['FirstName']} {player['LastName']}"
-                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']},{player['State']}"
+                if stats["ID"] > 0:
+                    title = f"{player['FirstName']} {player['LastName']} {stats['CollegePlayerID']}"
+                else:
+                    title = f"{player['FirstName']} {player['LastName']}"
+                desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']}, {player['State']}"
                 attrlist = player_builder.GetPriorityFields(player)
                 embed_player = discord.Embed(colour=discord.Colour.gold(),
                                     description=desc,
@@ -95,6 +98,8 @@ class cfb_player_name_stats(commands.Cog):
                         embed_player.add_field(name="Grs. Punt Distance", value=stats["GrossPuntDistance"])
                         embed_player.add_field(name="Punt Touchbacks", value=stats["PuntTouchbacks"])
                         embed_player.add_field(name="Inside 20", value=stats["PuntsInside20"])
+                else:
+                        embed_player.add_field(name="", value="Stats work best on players who have actually played games")
 
                 embed_player.set_thumbnail(url=logo_url)
                 embed_player.set_footer(text="SimFBA Association")

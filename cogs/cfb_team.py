@@ -9,13 +9,13 @@ class cfb_team(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     @app_commands.command(name="cfb_team", description="Look up a college football team")
-    async def cfb_team(self, interaction: discord.Interaction, abbr: str):
-        upper_input = abbr.upper()
+    async def cfb_team(self, interaction: discord.Interaction, team: str):
+        upper_input = team.upper()
         team_id = id_util.GetCollegeFootballTeamID(upper_input)
-        logo_url = logos_util.GetLogo(upper_input)
+        logo_url = logos_util.GetCFBLogo(team_id)
         data = api_requests.GetCollegeFootballTeam(team_id)
         if data == False:
-            await interaction.response.send_message(f"Could not find team based on the provided abbreviaton: {input}")
+            await interaction.response.send_message(f"Could not find team: {input}")
         else:
             team_data = data["TeamData"]
             standings = data["TeamStandings"]
@@ -26,7 +26,7 @@ class cfb_team(commands.Cog):
                 rank_label = f"({rank})"
             title = f"{rank_label} {team_data['TeamName']} {team_data['Mascot']}"
             desc = f"University based in {team_data['City']}, {team_data['State']}. Members of the {team_data['Conference']}."
-            embed = discord.Embed(colour=discord.Colour.dark_gold(),
+            embed = discord.Embed(colour=discord.Colour.from_str(team_data["ColorOne"]),
                                 description=desc,
                                 title=title)
             coach = ""
