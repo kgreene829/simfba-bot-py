@@ -39,7 +39,7 @@ class cfb_flex(commands.Cog):
                                 title=title)
             embed.add_field(name=f"{t1} Wins", value=team_one_wins, inline=True)
             embed.add_field(name=f"{t1} Losses", value=team_one_losses, inline=True)
-            embed.add_field(name=f"{t1} Best Streak", value=team_one_streak, inline=True)
+            embed.add_field(name=f"{t1} Best Streak", value=team_one_streak, inline=False)
             if team_one_season > 0:
                 embed.add_field(name=f"{t1} Largest Margin of Victory", value=f"{team_one_margin_score}, {team_one_season}", inline=True)
             embed.add_field(name="\u200B", value="\u200B")
