@@ -191,6 +191,7 @@ logo_book = {
   'Mississippi_Valley': f'{baseurl}/logos/MVSU_logo.png',
   'Northern_Arizona': f'{baseurl}/logos/NAU_logo.png',
   'Navy': f'{baseurl}/logos/Navy_Athletics_logo.png',
+  'NC_State': f'{baseurl}/logos/North_Carolina_State_University_Athletic_logo.png',
   'Nebraska': f'{baseurl}/logos/Nebraska_Cornhuskers_logo.png',
   'Nebraska_Omaha': f'{baseurl}/logos/Omaha_Mavericks_logo.png',
   'Nevada': f'{baseurl}/logos/Nevada_Wolf_Pack_logo.png',

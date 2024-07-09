@@ -22,6 +22,7 @@ async def stream_fb_game(chan, league: str, timeslot: str, week: str, isNFL):
         home_tag = game["HomeTeamDiscordID"]
         home_os = game["HomeOffensiveScheme"]
         home_ds = game["HomeDefensiveScheme"]
+        away_id = game["AwayTeamID"]
         away_team = game["AwayTeam"]
         away_tag = game["AwayTeamDiscordID"]
         away_rank = game["AwayTeamRank"]
@@ -71,8 +72,11 @@ async def stream_fb_game(chan, league: str, timeslot: str, week: str, isNFL):
         f_home_score = 0
         f_away_score = 0
         ### Logos
-        home_url = logos_util.GetLogo(home_team.strip())
-        away_url = logos_util.GetLogo(away_team.strip())
+        home_url = ""
+        away_url = ""
+        if league == 'cfb':
+            home_url = logos_util.GetCFBLogo(int(home_id))
+            away_url = logos_util.GetCFBLogo(int(away_id))
         announcer = util.PickAnnouncer(league, home_id)
         announcer_url = logos_util.GetAnnouncer(announcer)
         intro_text = util.AnnouncerIntroText(announcer, home_label, away_label, 'CFB', stadium)
