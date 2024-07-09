@@ -74,7 +74,7 @@ async def stream_fb_game(chan, league: str, timeslot: str, week: str, isNFL):
         ### Logos
         home_url = ""
         away_url = ""
-        if league == 'cfb':
+        if league == 'fbs' or league == 'fcs':
             home_url = logos_util.GetCFBLogo(int(home_id))
             away_url = logos_util.GetCFBLogo(int(away_id))
         announcer = util.PickAnnouncer(league, home_id)

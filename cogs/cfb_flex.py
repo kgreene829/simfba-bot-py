@@ -41,8 +41,7 @@ class cfb_flex(commands.Cog):
             embed.add_field(name=f"{t1} Losses", value=team_one_losses, inline=True)
             embed.add_field(name=f"{t1} Best Streak", value=team_one_streak, inline=True)
             if team_one_season > 0:
-                embed.add_field(name=f"{t1} Largest Margin of Victory", value=f"{team_one_margin_score}, {team_one_season}", inline=True)
-            embed.add_field(name="\u200B", value="\u200B")
+                embed.add_field(name=f"{t1} Largest Margin of Victory", value=f"{team_one_margin_score}, {team_one_season}", inline=False)
             embed.add_field(name=f"{t2} Wins", value=team_two_wins, inline=True)
             embed.add_field(name=f"{t2} Losses", value=team_two_losses, inline=True)
             embed.add_field(name=f"{t2} Best Streak", value=team_two_streak, inline=True)

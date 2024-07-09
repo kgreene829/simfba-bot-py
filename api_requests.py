@@ -71,6 +71,12 @@ def GetCollegeFootballPlayer_id(id):
         return res.json()
     return False
 
+def GetCollegeFootballPlayerCareer_id(id):
+    res = requests.get(f"{fba_url}ds/college/player/careerstats/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
 def GetNFLFootballPlayer(first_name, last_name, id):
     res = requests.get(f"{fba_url}ds/nfl/player/name/{first_name}/{last_name}/{id}")
     if res.status_code == 200:
@@ -79,6 +85,12 @@ def GetNFLFootballPlayer(first_name, last_name, id):
 
 def GetNFLFootballPlayer_id(id):
     res = requests.get(f"{fba_url}ds/nfl/player/id/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNFLFootballPlayerCareer_id(id):
+    res = requests.get(f"{fba_url}ds/nfl/player/careerstats/{id}")
     if res.status_code == 200:
         return res.json()
     return False

@@ -5,11 +5,11 @@ import logos_util
 import id_util
 import api_requests
 
-class cfb_croot_class(commands.Cog):
+class cfb_class(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_croot_class", description="Look up a college football teams crooting class")
-    async def cfb_croot_class(self, interaction: discord.Interaction, team: str):
+    @app_commands.command(name="cfb_class", description="Look up a college football teams crooting class")
+    async def cfb_class(self, interaction: discord.Interaction, team: str):
         upper_input = team.upper()
         team_id = id_util.GetCollegeFootballTeamID(upper_input)
         logo_url = logos_util.GetCFBLogo(team_id)
@@ -33,7 +33,7 @@ class cfb_croot_class(commands.Cog):
             
             for i in recruits:
                 recruit = recruits[a]["Recruit"]
-                embed.add_field(name=f"{recruit['FirstName']} {recruit['LastName']}", value=f"{recruit['Stars']} Star {recruit['Archetype']} {recruit['Position']} from {recruit['State']}" +
+                embed.add_field(name=f"{recruit['FirstName']} {recruit['LastName']} {recruit['PlayerID']}", value=f"{recruit['Stars']} Star {recruit['Archetype']} {recruit['Position']} from {recruit['State']}" +
                                 f"\nOverall: {recruit['OverallGrade']} \nPotential: {recruit['PotentialGrade']}", inline=False)
                 
                 a += 1
@@ -43,4 +43,4 @@ class cfb_croot_class(commands.Cog):
             await interaction.response.send_message(embed=embed)
             
 async def setup(client: commands.Bot):
-    await client.add_cog(cfb_croot_class(client))
+    await client.add_cog(cfb_class(client))
