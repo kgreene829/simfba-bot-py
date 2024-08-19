@@ -4,10 +4,12 @@ import csv
 from helper import embed_builder, message_sender
 import constants
 import logos_util
+import id_util
 import asyncio
 
 async def stream_cbb_game(chan, channel: str, week: str, day: str):
     day_uppercase = day.upper()
+    injury_url = logos_util.GetIcon("Injury")
     week_directory = os.path.normpath(os.path.join(constants.base_simulation_path, channel, f"Week {week}", day_uppercase))
     play_by_play_directory = os.path.normpath(os.path.join(week_directory, "play_by_plays"))
     if os.path.exists(play_by_play_directory):
@@ -121,7 +123,7 @@ async def stream_cbb_game(chan, channel: str, week: str, day: str):
                         elif type_of_play == "FinalScore":
                             continue
                         else:
-                            play_embed = embed_builder.Get_CBB_Play_Embed(play, home_team_abbr, away_team_abbr, home_url, away_url, home_score, away_score)
+                            play_embed = embed_builder.Get_CBB_Play_Embed(play, home_team_abbr, away_team_abbr, home_url, away_url, home_score, away_score, injury_url)
                             await message_sender.SendEmbedMessage(chan, embed=play_embed)
                         if type_of_play == "Tipoff" or type_of_play == "FreeThrow":
                             await asyncio.sleep(2)
@@ -129,7 +131,7 @@ async def stream_cbb_game(chan, channel: str, week: str, day: str):
                             await asyncio.sleep(3)
                         elif type_of_play == "Score" or type_of_play == "Missed" or type_of_play == "Miss":
                             await asyncio.sleep(4)
-                        elif type_of_play == "Shot Clock" or type_of_play == "Out of Bounds" or type_of_play == "Fouled":
+                        elif type_of_play == "Shot Clock" or type_of_play == "Out of Bounds" or type_of_play == "Fouled" or type_of_play == "Injury":
                             await asyncio.sleep(8)
                         elif type_of_play == "HALFTIME" or type_of_play == "OVERTIME":
                             await asyncio.sleep(15)

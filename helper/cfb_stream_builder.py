@@ -77,9 +77,12 @@ async def stream_fb_game(chan, league: str, timeslot: str, week: str, isNFL):
         if league == 'fbs' or league == 'fcs':
             home_url = logos_util.GetCFBLogo(int(home_id))
             away_url = logos_util.GetCFBLogo(int(away_id))
+        else:
+            home_url = logos_util.GetNFLLogo(int(home_id))
+            away_url = logos_util.GetNFLLogo(int(away_id))
         announcer = util.PickAnnouncer(league, home_id)
         announcer_url = logos_util.GetAnnouncer(announcer)
-        intro_text = util.AnnouncerIntroText(announcer, home_label, away_label, 'CFB', stadium)
+        intro_text = util.AnnouncerIntroText(announcer, home_label, away_label, league, stadium)
 
         ### Build Announcer Embed
         init_embed = discord.Embed(colour=discord.Colour.blue(),description=intro_text,title=f"Streaming {home_label} Match!")
