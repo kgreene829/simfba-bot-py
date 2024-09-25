@@ -62,6 +62,7 @@ class nba_team(commands.Cog):
                 embed.add_field(name="Arena", value=team_data['Arena'], inline=False)
                 a_rank_label = ''
                 h_rank_label = ''
+                embed.add_field(name="Schedule", value="", inline=False)
 
                 if len(matches) > 0:
                     for m in matches:
@@ -128,6 +129,7 @@ class nba_team(commands.Cog):
                 embed.add_field(name="Arena", value=team_data['Arena'], inline=False)
                 a_rank_label = ''
                 h_rank_label = ''
+                embed.add_field(name="Schedule", value="", inline=False)
 
                 if len(matches) > 0:
                     for m in matches:
