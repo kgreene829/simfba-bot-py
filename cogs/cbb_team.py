@@ -38,6 +38,9 @@ class cbb_team(commands.Cog):
                 current_record_label = f"{team_standings['TotalWins']}-{team_standings['TotalLosses']} ({team_standings['ConferenceWins']}-{team_standings['ConferenceLosses']})"
                 embed.add_field(name="Current Record", value=f"{current_record_label}", inline=True)
                 embed.add_field(name="Arena", value=team_data['Arena'], inline=False)
+                a_rank_label = ''
+                h_rank_label = ''
+                embed.add_field(name="Schedule", value="", inline=False)
 
                 if len(matches) > 0:
                     for m in matches:
@@ -83,6 +86,7 @@ class cbb_team(commands.Cog):
                 embed.add_field(name="Arena", value=team_data['Arena'], inline=False)
                 a_rank_label = ''
                 h_rank_label = ''
+                embed.add_field(name="Schedule", value="", inline=False)
 
                 if len(matches) > 0:
                     for m in matches:
