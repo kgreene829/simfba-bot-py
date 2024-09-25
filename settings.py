@@ -20,7 +20,7 @@ COGS_DIR = BASE_DIR / 'cogs'
 GUILDS_ID = discord.Object(id=GetEnvironmentVariable("GUILD_ID"))
 GUILD_ID_INT = GetEnvironmentVariable("GUILD_ID")
 STREAM_CHANNEL = GetEnvironmentVariable("FBS_STREAM")
-B1G_NOON = GetEnvironmentVariable("B1G_NOON_STREAM")
+B1G_NOON = GetEnvironmentVariable("BIG_NOON_STREAM")
 PRIME_TIME = GetEnvironmentVariable("PRIME_TIME_STREAM")
 AFTER_DARK = GetEnvironmentVariable("AFTER_DARK_STREAM")
 CBB_STREAM_CHANNEL = GetEnvironmentVariable("CBB_STREAM")

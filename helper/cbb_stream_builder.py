@@ -38,7 +38,7 @@ async def stream_cbb_game(chan, channel: str, week: str, day: str):
             if filename.endswith('.csv'):
                 game_path = os.path.normpath(os.path.join(play_by_play_directory, filename))
                 with open(game_path, newline="") as game:
-                    reader = csv.reader(game, delimiter=",", quotechar="|")
+                    reader = csv.reader(game, delimiter=",", quotechar='"')
                     total_rows = list(reader)
                     for row in total_rows:
                         if count == 1:
