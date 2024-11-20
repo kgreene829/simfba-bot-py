@@ -15,7 +15,7 @@ class cbb_team(commands.Cog):
         logo_url = logos_util.GetCBBLogo(team_id)
         data = api_requests.GetCollegeBasketballTeam(team_id)
         if data == False:
-            await interaction.response.send_message(f"Could not find team based on the provided abbreviaton: {input}")
+            await interaction.response.send_message(f"Could not find team: {input}")
         else:
             team_data = data["TeamData"]
             team_standings = data["TeamStandings"]
@@ -40,9 +40,9 @@ class cbb_team(commands.Cog):
                 embed.add_field(name="Arena", value=team_data['Arena'], inline=False)
                 a_rank_label = ''
                 h_rank_label = ''
+                embed.add_field(name="Schedule", value="", inline=False)
 
                 if len(matches) > 0:
-                    embed.add_field(name="\u200B", value="\u200B")
                     for m in matches:
                         is_complete = m['GameComplete']
                         match_description = ""
@@ -54,11 +54,13 @@ class cbb_team(commands.Cog):
                         natty_label = ""
                         match_arena = f"{m['Stadium']}"
                         ovr_desc = ""
+                        match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
                         if is_complete == True:
                             match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
                         else:
-                            match_description = f"{m['Week']} {m['TimeSlot']} "
-                        ovr_desc = f"{match_description} | At {match_arena}"
+                            match_description = ""
+                        embed.add_field(name="", value=match, inline=False)
+                        embed.add_field(name=match_description, value="", inline=False)
     
                 embed.set_thumbnail(url=logo_url)
                 await interaction.response.send_message(embed=embed)
@@ -84,9 +86,9 @@ class cbb_team(commands.Cog):
                 embed.add_field(name="Arena", value=team_data['Arena'], inline=False)
                 a_rank_label = ''
                 h_rank_label = ''
+                embed.add_field(name="Schedule", value="", inline=False)
 
                 if len(matches) > 0:
-                    embed.add_field(name="\u200B", value="\u200B")
                     for m in matches:
                         is_complete = m['GameComplete']
                         match_description = ""
@@ -96,13 +98,15 @@ class cbb_team(commands.Cog):
                         bowl_label =""
                         playoff_label = ""
                         natty_label = ""
-                        match_arena = f"{m['Stadium']}"
+                        match_arena = f"{m['Arena']}"
                         ovr_desc = ""
+                        match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
                         if is_complete == True:
                             match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
                         else:
-                            match_description = f"{m['Week']} {m['TimeSlot']} "
-                        ovr_desc = f"{match_description} | At {match_arena}"
+                            match_description = ""
+                        embed.add_field(name="", value=match, inline=False)
+                        embed.add_field(name=match_description, value="", inline=False)
     
                 embed.set_thumbnail(url=logo_url)
                 await interaction.response.send_message(embed=embed)
