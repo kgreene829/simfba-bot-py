@@ -922,7 +922,7 @@ def GetCBBLogo(team):
     elif team == 262:
        return logos.logo_book["Elon"]
     elif team == 240:
-       return logos.logo_book["Eastern_Michigan"]
+       return logos.logo_book["Eastern_Washington"]
     elif team == 326:
        return logos.logo_book["ETSU"]
     elif team == 302:
