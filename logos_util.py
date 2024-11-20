@@ -833,6 +833,8 @@ def GetCBBLogo(team):
        return logos.logo_book["Texas_AM_Corpus"]
     elif team == 232:
        return logos.logo_book["American"]
+    elif team == 368:
+        return logos.logo_book["American_Samoa"]
     elif team == 149:
        return logos.logo_book["Austin_Peay"]
     elif team == 342:
@@ -1033,6 +1035,8 @@ def GetCBBLogo(team):
        return logos.logo_book["Missouri_State"]
     elif team == 362:
        return logos.logo_book["Merrimack"]
+    elif team == 369:
+        return logos.logo_book["Mercyhurst"]
     elif team == 297:
        return logos.logo_book["Marist"]
     elif team == 294:
@@ -1247,6 +1251,8 @@ def GetCBBLogo(team):
        return logos.logo_book["William_and_Mary"]
     elif team == 324:
        return logos.logo_book["Wofford"]
+    elif team == 367:
+        return logos.logo_book["West_Georgia"]
     elif team == 282:
        return logos.logo_book["Wright_State"]
     elif team == 199:

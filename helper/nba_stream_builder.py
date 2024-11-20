@@ -4,10 +4,12 @@ import csv
 from helper import embed_builder, message_sender
 import constants
 import logos_util
+import id_util
 import asyncio
 
 async def stream_game(chan, channel: str, week: str, day: str):
     day_uppercase = day.upper()
+    injury_url = logos_util.GetIcon("Injury")
     week_directory = os.path.normpath(os.path.join(constants.base_simulation_path, channel, f"Week {week}", day_uppercase))
     play_by_play_directory = os.path.normpath(os.path.join(week_directory, "play_by_plays"))
     if os.path.exists(play_by_play_directory):
@@ -36,7 +38,7 @@ async def stream_game(chan, channel: str, week: str, day: str):
             if filename.endswith('.csv'):
                 game_path = os.path.normpath(os.path.join(play_by_play_directory, filename))
                 with open(game_path, newline="") as game:
-                    reader = csv.reader(game, delimiter=",", quotechar="|")
+                    reader = csv.reader(game, delimiter=",", quotechar='"')
                     total_rows = list(reader)
                     for row in total_rows:
                         if count == 1:
@@ -141,7 +143,7 @@ async def stream_game(chan, channel: str, week: str, day: str):
                             end_of_quarter_embed.set_thumbnail(url=embed_url)
                             await message_sender.SendEmbedMessage(chan, embed=end_of_quarter_embed)
                         else:
-                            play_embed = embed_builder.Get_CBB_Play_Embed(play, home_team_abbr, away_team_abbr, home_url, away_url, home_score, away_score)
+                            play_embed = embed_builder.Get_CBB_Play_Embed(play, home_team_abbr, away_team_abbr, home_url, away_url, home_score, away_score,injury_url)
                             await message_sender.SendEmbedMessage(chan, embed=play_embed)
                         if type_of_play == "Tipoff" or type_of_play == "FreeThrow":
                             await asyncio.sleep(2)

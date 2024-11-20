@@ -1,8 +1,8 @@
 import requests
 import json
 
-fba_url = "https://simfba.azurewebsites.net/"
-test_url = "http://localhost:5001/"
+fba_url = "https://simfba.azurewebsites.net/api/"
+test_url = "http://localhost:5001/api/"
 bba_url = "https://simnba.azurewebsites.net/"
 
 def GetCollegeBasketballTeam(id):

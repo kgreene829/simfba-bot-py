@@ -1,7 +1,7 @@
 import discord
 ### FOR STREAMING
 
-def Get_CBB_Play_Embed(play, home_abbr, away_abbr, home_url, away_url, home_score, away_score):
+def Get_CBB_Play_Embed(play, home_abbr, away_abbr, home_url, away_url, home_score, away_score, injury_url):
     type_of_play = play["TypeOfPlay"]
     time_remaining = play["TimeRemaining"]
     possession = play["Possession"]
@@ -12,6 +12,8 @@ def Get_CBB_Play_Embed(play, home_abbr, away_abbr, home_url, away_url, home_scor
         embed_url = home_url
     else:
         embed_url = away_url
+    if type_of_play == "Injury":
+        embed_url = injury_url
     embed = discord.Embed(colour=discord.Colour.orange(),description=desc,title="Play")
     embed.add_field(name="Type of Play", value=f"{type_of_play}", inline=False)
     embed.add_field(name=f"Possessions Remaining: {time_remaining}", value=f"Possession: {possession}", inline=False)

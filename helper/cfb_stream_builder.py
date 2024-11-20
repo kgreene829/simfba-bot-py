@@ -22,6 +22,7 @@ async def stream_fb_game(chan, league: str, timeslot: str, week: str, isNFL):
         home_tag = game["HomeTeamDiscordID"]
         home_os = game["HomeOffensiveScheme"]
         home_ds = game["HomeDefensiveScheme"]
+        away_id = game["AwayTeamID"]
         away_team = game["AwayTeam"]
         away_tag = game["AwayTeamDiscordID"]
         away_rank = game["AwayTeamRank"]
@@ -71,19 +72,17 @@ async def stream_fb_game(chan, league: str, timeslot: str, week: str, isNFL):
         f_home_score = 0
         f_away_score = 0
         ### Logos
-        if league == 'cfb':
-            home_team_id = id_util.GetCollegeFootballTeamID(home_team.strip().upper())
-            home_url = logos_util.GetCFBLogo(home_team_id)
-            away_team_id = id_util.GetCollegeFootballTeamID(away_team.strip().upper())
-            away_url = logos_util.GetCFBLogo(away_team_id)
-        elif league == 'nfl':
-            home_team_id = id_util.GetNFLTeamID(home_team.strip().upper())
-            home_url = logos_util.GetNFLLogo(home_team_id)
-            away_team_id = id_util.GetNFLTeamID(away_team.strip().upper())
-            away_url = logos_util.GetNFLLogo(away_team_id)
+        home_url = ""
+        away_url = ""
+        if league == 'fbs' or league == 'fcs':
+            home_url = logos_util.GetCFBLogo(int(home_id))
+            away_url = logos_util.GetCFBLogo(int(away_id))
+        else:
+            home_url = logos_util.GetNFLLogo(int(home_id))
+            away_url = logos_util.GetNFLLogo(int(away_id))
         announcer = util.PickAnnouncer(league, home_id)
         announcer_url = logos_util.GetAnnouncer(announcer)
-        intro_text = util.AnnouncerIntroText(announcer, home_label, away_label, 'CFB', stadium)
+        intro_text = util.AnnouncerIntroText(announcer, home_label, away_label, league, stadium)
 
         ### Build Announcer Embed
         init_embed = discord.Embed(colour=discord.Colour.blue(),description=intro_text,title=f"Streaming {home_label} Match!")
