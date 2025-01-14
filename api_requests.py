@@ -3,7 +3,7 @@ import json
 
 fba_url = "https://simfba.azurewebsites.net/api/"
 test_url = "http://localhost:5001/api/"
-bba_url = "https://simnba.azurewebsites.net/"
+bba_url = "https://simnba.azurewebsites.net/api/"
 
 def GetCollegeBasketballTeam(id):
     res = requests.get(f"{bba_url}dis/cbb/team/{id}")
