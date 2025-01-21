@@ -18,7 +18,7 @@ class nfl_player_id_attributes(commands.Cog):
             else:
                 player = data["Player"]
                 stats = data["NFLStats"]
-                title = f"{player['FirstName']} {player['LastName']} {str(id)}"
+                title = f"{player['FirstName']} {player['LastName']} {player['Position']}"
                 desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
                 attrlist = player_builder.GetPriorityFields(player)
                 team_id = id_util.GetNFLTeamID(player['Team'].upper())
