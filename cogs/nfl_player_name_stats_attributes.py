@@ -22,9 +22,9 @@ class nfl_player_name_attributes(commands.Cog):
                 player = data["Player"]
                 stats = data["NFLStats"]
                 if stats["ID"] > 0:
-                    title = f"{player['FirstName']} {player['LastName']} {stats['NFLPlayerID']}"
+                    title = f"{player['FirstName']} {player['LastName']} {player['Position']}"
                 else:
-                    title = f"{player['FirstName']} {player['LastName']}"
+                    title = f"{player['FirstName']} {player['LastName']} {player['Position']}"
                 desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
                 attrlist = player_builder.GetPriorityFields(player)
                 logo_url = logos_util.GetLogo(player['Team'])
