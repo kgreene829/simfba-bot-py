@@ -97,7 +97,7 @@ class nfl_player_id_stats(commands.Cog):
                         embed_player.add_field(name="Inside 20", value=stats["PuntsInside20"])
 
                 else:
-                    embed_player.add_field(name="Stats work best on players who have actually played games")
+                    embed_player.add_field(name="Stats work best on players who have actually played games", value = "")
 
                 embed_player.set_thumbnail(url=logo_url)
                 embed_player.set_footer(text="SimFBA Association")
