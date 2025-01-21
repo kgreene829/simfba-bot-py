@@ -16,7 +16,7 @@ class nba_player_id_stats(commands.Cog):
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
                 stats = data["SeasonStats"]
-                title = f"{data['FirstName']} {data['LastName']} {str(id)}"
+                title = f"{data['FirstName']} {data['LastName']} {data['Position']}"
                 desc = f"{data['Year']} year veteran {data['Archetype']} {data['Position']} Graduated from {data['College']}"
                 team_id = id_util.GetNBATeamID(data['TeamAbbr'].upper())
                 logo_url = logos_util.GetNBALogo(team_id)
