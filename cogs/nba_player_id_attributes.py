@@ -15,8 +15,8 @@ class nba_player_id_attributes(commands.Cog):
             if data == False:
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
-                title = f"{data['FirstName']} {data['LastName']} {str(id)}"
-                desc = f"Graduated from {data['College']}"
+                title = f"{data['FirstName']} {data['LastName']} {data['Position']}"
+                desc = f"{data['Year']} year veteran {data['Archetype']} {data['Position']} Graduated from {data['College']}"
                 team_id = id_util.GetNBATeamID(data['TeamAbbr'].upper())
                 logo_url = logos_util.GetNBALogo(team_id)
                 embed = discord.Embed(colour=discord.Colour.orange(),
