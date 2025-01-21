@@ -24,7 +24,7 @@ class nfl_player_name_stats(commands.Cog):
                 if stats["ID"] > 0:
                     title = f"{player['FirstName']} {player['LastName']} {player['Position']}"
                 else:
-                     title = f"{player['FirstName']} {player['LastName']} {player['Position']}"
+                    title = f"{player['FirstName']} {player['LastName']} {player['Position']}"
                 desc = f"{player['Year']} year veteran {player['Archetype']} {player['Position']} Graduated from {player['College']}"
                 attrlist = player_builder.GetPriorityFields(player)
                 embed_player = discord.Embed(colour=discord.Colour.gold(),
