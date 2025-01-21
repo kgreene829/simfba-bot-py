@@ -18,7 +18,7 @@ class cfb_player_id_attributes(commands.Cog):
             else:
                 player = data["Player"]
                 stats = data["CollegeStats"]
-                title = f"{player['FirstName']} {player['LastName']} {str(id)}"
+                title = f"{player['FirstName']} {player['LastName']} {player['Position']}"
                 desc = f"{player['Stars']} Star {player['Year']} {player['Archetype']} {player['Position']} from {player['City']}, {player['State']}"
                 attrlist = player_builder.GetPriorityFields(player)
                 team_id = id_util.GetCollegeFootballTeamID(player['Team'].upper())
