@@ -146,6 +146,7 @@ logo_book = {
   'Lamar': f'{baseurl}/logos/Lamar_Cardinals_logo.png',
   'LaSalle': f'{baseurl}/logos/La_Salle_Explorers_logo.png',
   'LeHigh': f'{baseurl}/logos/LehighMountainHawks.png',
+  'LeMoyne': f'{baseurl}/logos/Le_Moyne_Dolphins_logo.png',
   'Liberty': f'{baseurl}/logos/Liberty_Flames_logo.png',
   'Lindenwood': f'{baseurl}/logos/Lindenwood_Lions_logo.png',
   'Lipscomb': f'{baseurl}/logos/lipscomb_bisons.png',
@@ -180,6 +181,7 @@ logo_book = {
   'Middle_Tennessee': f'{baseurl}/logos/Middle_Tennessee_Athletics_logo.png',
   'Milwaukee': f'{baseurl}/logos/Milwaukee_Panthers_logo.png',
   'Minnesota': f'{baseurl}/logos/Minnesota_Golden_Gophers_logo.png',
+  'Minnesota-Duluth': f'{baseurl}/logos/Minnesota_Duluth_Bulldogs.png',
   'Mississippi_State': f'{baseurl}/logos/Mississippi_State_Bulldogs_logo.png',
   'Missouri': f'{baseurl}/logos/Missouri_Tigers_logo.png',
   'Missouri_State': f'{baseurl}/logos/Missouri_State_Athletics_logo.png',
@@ -657,6 +659,18 @@ announcer_book = {
     'Matt Payme': f"{announcer_url}/MattPayme.png",
     'MrManul': f"{announcer_url}/MrManul.png",
     'Versace': f"{announcer_url}/VersaceMainLaFleur.jpeg",
+    'BK Toucan':f"{announcer_url}/bk_toucan.png",
+    'DJ Byeson':f"{announcer_url}/bk_dj_bison.png",
+    'Kenny':f"{announcer_url}/bk_kenny.png",
+    'Jody': f"{announcer_url}/bk_hoya.png",
+    'Madison': f"{announcer_url}/bk_madison.png",
+    'Ian': f"{announcer_url}/bk_ian.png",
+    'Joshua': f"{announcer_url}/bk_joshua.png",
+    'HK Toucan':f"{announcer_url}/hk_toucan.png",
+    'HK Dante':f"{announcer_url}/hk_dante_bison.png",
+    'Penny':f"{announcer_url}/hk_penny.png",
+    'Maurice':f"{announcer_url}/hk_maurice_moose.png",
+
 }
 
 icon_book = {

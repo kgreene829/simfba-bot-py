@@ -82,3 +82,34 @@ def get_down(down):
     elif down == "4"or down == 4:
         return "4th Down"
     return "IT'S 5TH DOWN EVERYBODY!"
+
+def Get_Hockey_Play_Embed(play, home_abbr, away_abbr, home_url, away_url, home_score, away_score, injury_url):
+    period = play["Period"]
+    zone = play["Zone"]
+    event = play["Event"]
+    penalty = play["Penalty"]
+    severity = play["Severity"]
+    time_remaining = play["TimeOnClock"]
+    time_consumed = play["TimeConsumed"]
+    possession = play["Possession"]
+    result = play["Result"]
+    desc = f"Current Score: {home_abbr} {home_score} - {away_abbr} {away_score}"
+    embed_url = ""
+    if possession == home_abbr:
+        embed_url = home_url
+    else:
+        embed_url = away_url
+    if event == "Penalty Check":
+        embed_url = injury_url
+    embed = discord.Embed(colour=discord.Colour.light_gray(),description=desc,title="Play")
+    embed.add_field(name=f"Period: {period}", value=f"Time: {time_remaining}", inline=True)
+    embed.add_field(name=f"Time Passed", value=f"{time_consumed}", inline=True)
+    embed.add_field(name="Zone", value=f"{zone}", inline=True)
+    embed.add_field(name="Event", value=f"{event}", inline=False)
+
+    if event == "Penalty Check":
+        embed.add_field(name="Case", value=f"{penalty}", inline=True)
+        embed.add_field(name="Severity", value=f"{severity}", inline=True)
+    embed.add_field(name="Result", value=f"{result}", inline=False)    
+    embed.set_thumbnail(url=embed_url)
+    return embed

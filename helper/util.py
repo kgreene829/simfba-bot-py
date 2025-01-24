@@ -22,6 +22,10 @@ def GetIntroPenaltyStr():
 
     return random.choice(intro_list)
 
+def PickBKAnnouncer():
+    base_list = ['BK Toucan', 'DJ Byeson', 'Kenny', 'Jody', 'Madison', 'Ian', 'Joshua']
+    return random.choice(base_list)
+
 def PickAnnouncer(league: str, home_id):
     # Specific Announcer Requests
     if home_id == 32 and league != 'nfl':
@@ -50,6 +54,21 @@ def PickAnnouncer(league: str, home_id):
         base_list += ['Leftenant Amy Cross', 'Terry Ross', 'AK-T-Y4M4', 'Bill Kirksby', 'Toucan', 'Captain Jonas']
 
     return random.choice(base_list)
+
+def BKAnnouncerIntroText(announcer: str, ht: str, at: str, league: str, stadium: str):
+    league_str = "SimCBB"
+    if league == 'nba':
+        league_str = "SimNBA"
+    announcer_intro_book = {
+      'BK Toucan': f"Hello and welcome to another exciting broadcast of the {league_str} show! I am your host, ToucanSoda, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {stadium}!",
+      "Joshua": f"What's up everybody, welcome another {league_str} matchup at {stadium}! I am your host, Joshua Pilot, and today I will be covering the {ht} and the {at}!",
+      "DJ Byeson": f"Yo what's up and welcome to another exciting matchup of the {league_str} show! I am your host, DJ Bye-Son, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {stadium}!",
+      "Kenny": f"Hey there, welcome to another exciting matchup of the {league_str} show! I am your host, Kenny Bobcat, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {stadium}!",
+      "Jody": f"Helloooooo basketball fans! Welcome to another exciting matchup of the {league_str} show! I am your host, Jody Hoya, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {stadium}!",
+      "Madison": f"Welcome fans and all another exciting matchup of the {league_str} show! I am your host, Madison Gardner, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {stadium}!",
+      "Ian": f"Fellow patriots, WELCOME to another exciting matchup of the {league_str} show! I am your host, Ian the Eagle, and today I will be covering the {ht} and the {at} in this very patriotic matchup here at {stadium}!",
+    }
+    return announcer_intro_book[announcer]
 
 def AnnouncerIntroText(announcer: str, ht: str, at: str, league: str, stadium: str):
     league_str = "SimCFB"

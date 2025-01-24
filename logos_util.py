@@ -994,7 +994,7 @@ def GetCBBLogo(team):
     elif team == 238:
        return logos.logo_book["LeHigh"]
     elif team == 357:
-       return logos.logo_book["Lemoyne"]
+       return logos.logo_book["LeMoyne"]
     elif team == 316:
        return logos.logo_book["Lindenwood"]
     elif team == 153:
@@ -1730,6 +1730,12 @@ def GetNFLLogo(team):
         return logos.logo_book["SF_49ers"]
     elif team == 32:
         return logos.logo_book["SEA_Seahawks"]
+
+def GetCHLLogo(team):
+    if team == 38:
+        return logos.logo_book["Minnesota-Duluth"]
+    if team == 63:
+        return logos.logo_book["Wisconsin"]
 
 def GetIcon(icon: str):
     return logos.icon_book[icon]
