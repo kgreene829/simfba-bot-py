@@ -1,7 +1,7 @@
 import discord
 import os
 import csv
-from helper import embed_builder, message_sender
+from helper import embed_builder, message_sender, util
 import constants
 import logos_util
 import id_util
@@ -87,6 +87,18 @@ async def stream_game(chan, channel: str, week: str, day: str):
                     away_team_id = id_util.GetNBATeamID(away_team_abbr.upper())
                     away_url = logos_util.GetNBALogo(away_team_id)
 
+                    ### Announcer Data
+                    announcer = util.PickBKAnnouncer()
+                    announcer_url = logos_util.GetAnnouncer(announcer)
+                    intro_text = util.BKAnnouncerIntroText(announcer, home_team_abbr, away_team_abbr, "nba", arena)
+
+                    ## Announcer Embed
+                    announcer_embed = discord.Embed(colour=discord.Colour.blue(),description=intro_text,title=f"Streaming SimNBA Match!")
+                    announcer_embed.add_field(name="Announcer", value=announcer, inline=False)
+                    announcer_embed.set_thumbnail(url=announcer_url)
+                    await message_sender.SendEmbedMessage(chan, announcer_embed)
+                    await asyncio.sleep(3)
+
                     ### Build Initial Embed
                     init_embed = discord.Embed(colour=discord.Colour.blue(),description=contending_teams_str,title="Streaming CBB Match Live on CBS!")
                     if len(match_name) > 0:
@@ -102,6 +114,7 @@ async def stream_game(chan, channel: str, week: str, day: str):
                     init_embed.add_field(name="Away Defensive Formation", value=f"{away_defensive_formation}", inline=False)
                     init_embed.set_thumbnail(url=home_url)
                     await message_sender.SendEmbedMessage(chan, embed=init_embed)
+                    await asyncio.sleep(5)
 
                     home_score = 0
                     away_score = 0
