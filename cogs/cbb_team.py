@@ -42,25 +42,29 @@ class cbb_team(commands.Cog):
                 h_rank_label = ''
                 embed.add_field(name="Schedule", value="", inline=False)
 
+                x = 0
+
                 if len(matches) > 0:
                     for m in matches:
-                        is_complete = m['GameComplete']
-                        match_description = ""
-                        neutral_label = ""
-                        conf_label = ""
-                        conf_tourney_label = ""
-                        bowl_label =""
-                        playoff_label = ""
-                        natty_label = ""
-                        match_arena = f"{m['Stadium']}"
-                        ovr_desc = ""
-                        match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
-                        if is_complete == True:
-                            match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
-                        else:
+                        if x >= len(matches)-4:
+                            is_complete = m['GameComplete']
                             match_description = ""
-                        embed.add_field(name="", value=match, inline=False)
-                        embed.add_field(name=match_description, value="", inline=False)
+                            neutral_label = ""
+                            conf_label = ""
+                            conf_tourney_label = ""
+                            bowl_label =""
+                            playoff_label = ""
+                            natty_label = ""
+                            match_arena = f"{m['Arena']}"
+                            ovr_desc = ""
+                            match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
+                            if is_complete == True:
+                                match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
+                            else:
+                                match_description = ""
+                            embed.add_field(name="", value=match, inline=False)
+                            embed.add_field(name=match_description, value="", inline=False)
+                        x += 1
     
                 embed.set_thumbnail(url=logo_url)
                 await interaction.response.send_message(embed=embed)
@@ -88,25 +92,29 @@ class cbb_team(commands.Cog):
                 h_rank_label = ''
                 embed.add_field(name="Schedule", value="", inline=False)
 
+                x = 0
+
                 if len(matches) > 0:
                     for m in matches:
-                        is_complete = m['GameComplete']
-                        match_description = ""
-                        neutral_label = ""
-                        conf_label = ""
-                        conf_tourney_label = ""
-                        bowl_label =""
-                        playoff_label = ""
-                        natty_label = ""
-                        match_arena = f"{m['Arena']}"
-                        ovr_desc = ""
-                        match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
-                        if is_complete == True:
-                            match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
-                        else:
+                        if x >= len(matches)-4:
+                            is_complete = m['GameComplete']
                             match_description = ""
-                        embed.add_field(name="", value=match, inline=False)
-                        embed.add_field(name=match_description, value="", inline=False)
+                            neutral_label = ""
+                            conf_label = ""
+                            conf_tourney_label = ""
+                            bowl_label =""
+                            playoff_label = ""
+                            natty_label = ""
+                            match_arena = f"{m['Arena']}"
+                            ovr_desc = ""
+                            match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
+                            if is_complete == True:
+                                match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
+                            else:
+                                match_description = ""
+                            embed.add_field(name="", value=match, inline=False)
+                            embed.add_field(name=match_description, value="", inline=False)
+                        x += 1
     
                 embed.set_thumbnail(url=logo_url)
                 await interaction.response.send_message(embed=embed)

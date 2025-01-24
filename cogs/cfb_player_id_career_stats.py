@@ -17,7 +17,7 @@ class cfb_player_id_career_stats(commands.Cog):
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
                 stats = data["SeasonStats"]
-                title = f"{data['FirstName']} {data['LastName']} {str(id)}"
+                title = f"{data['FirstName']} {data['LastName']} {data['Position']}"
                 desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}"
                 team_id = id_util.GetCollegeFootballTeamID(data['TeamAbbr'].upper())
                 logo_url = logos_util.GetCFBLogo(team_id)

@@ -20,7 +20,7 @@ class cbb_player_id_stats(commands.Cog):
                 else:
                     location = data['Country']
                 stats = data["SeasonStats"]
-                title = f"{data['FirstName']} {data['LastName']} {str(id)}"
+                title = f"{data['FirstName']} {data['LastName']} {data['Position']}"
                 desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {location}"
                 team_id = id_util.GetCollegeBasketballTeamID(data['TeamAbbr'].upper())
                 logo_url = logos_util.GetCBBLogo(team_id)

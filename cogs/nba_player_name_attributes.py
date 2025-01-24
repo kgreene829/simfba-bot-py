@@ -18,7 +18,7 @@ class nba_player_name_attributes(commands.Cog):
             if data == False:
                 await interaction.response.send_message(f"Could not find player")
             else:
-                title = f"{data['FirstName']} {data['LastName']} {data['PlayerID']}"
+                title = f"{data['FirstName']} {data['LastName']} {data['Position']}"
                 desc = f"{data['Year']} year veteran {data['Archetype']} {data['Position']} Graduated from {data['College']}"
                 embed = discord.Embed(colour=discord.Colour.orange(),
                                     description=desc,
