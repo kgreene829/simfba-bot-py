@@ -14,7 +14,7 @@ class assign_id(commands.Cog):
         try:
             upper_input = team.upper()
             team_id = id_util.GetCollegeFootballTeamID(upper_input)
-            logo_url = logos_util.GetLogo(team)
+            logo_url = logos_util.GetCFBLogo(team_id)
 
             discord_id = interaction.user.mention
             res = api_requests.RegisterFBTeam(False, team_id, discord_id)

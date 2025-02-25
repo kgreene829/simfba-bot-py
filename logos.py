@@ -278,6 +278,7 @@ logo_book = {
   'South_Carolina': f'{baseurl}/logos/South_Carolina_Gamecocks_logo.png',
   'South_Carolina_State': f'{baseurl}/logos/South_Carolina_State_Bulldogs_logo.png',
   'South_Dakota': f'{baseurl}/logos/South_Dakota_Coyotes_logo.png',
+  'South_Dakota_State': f'{baseurl}/logos/South_Dakota_State_Jackrabbits_logo.png',
   'South_Florida': f'{baseurl}/logos/South_Florida_Bulls_logo.png',
   'Southeast_Missouri': f'{baseurl}/logos/semo_logo.png',
   'Southeastern_Louisiana': f'{baseurl}/logos/Southeastern_Louisiana_Lions_logo.png',
