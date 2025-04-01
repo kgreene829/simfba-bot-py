@@ -12,6 +12,8 @@ class nba_team(commands.Cog):
     async def nba_team(self, interaction: discord.Interaction, team: str):
         upper_input = team.upper()
         team_id = id_util.GetNBATeamID(upper_input)
+        if team.isnumeric():
+            team_id = int(team)
         logo_url = logos_util.GetNBALogo(team_id)
         data = api_requests.GetNBABasketballTeam(team_id)
         if data == False:
