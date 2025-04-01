@@ -3,7 +3,9 @@ import json
 
 fba_url = "https://simfba.azurewebsites.net/api/"
 test_url = "http://localhost:5001/api/"
+bba_test_url = "http://localhost:8081/api/"
 bba_url = "https://simnba.azurewebsites.net/api/"
+# bba_url = bba_test_url
 
 def GetCollegeBasketballTeam(id):
     res = requests.get(f"{bba_url}dis/cbb/team/{id}")
@@ -178,6 +180,17 @@ def RegisterFBTeam(isNFL, team_id, user):
         req_url = f"{fba_url}ds/cfb/assign/discord/{team_id}/{user}"
     else:
         req_url = f"{fba_url}ds/nfl/assign/discord/{team_id}/{user}"
+    res = requests.get(f"{req_url}")
+    if res.status_code == 200:
+        return True
+    return False
+
+def RegisterBBTeam(isNBA, team_id, user, username):
+    req_url = ""
+    if isNBA == False:
+        req_url = f"{bba_url}ds/cbb/assign/discord/{team_id}/{user}"
+    else:
+        req_url = f"{bba_url}ds/nba/assign/discord/{team_id}/{user}/{username}"
     res = requests.get(f"{req_url}")
     if res.status_code == 200:
         return True
