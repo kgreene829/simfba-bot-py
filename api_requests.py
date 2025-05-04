@@ -5,6 +5,8 @@ fba_url = "https://simfba.azurewebsites.net/api/"
 test_url = "http://localhost:5001/api/"
 bba_test_url = "http://localhost:8081/api/"
 bba_url = "https://simnba.azurewebsites.net/api/"
+hck_test_url = "http://localhost:8080/api/"
+hck_url = "https://simhck-hqd2bme9gse5d7g9.westus-01.azurewebsites.net/api/"
 # bba_url = bba_test_url
 
 def GetCollegeBasketballTeam(id):
