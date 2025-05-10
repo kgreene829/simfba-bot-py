@@ -133,11 +133,11 @@ class assign_id(commands.Cog):
     async def phl_register(self, interaction: discord.Interaction, team: str):
         try:
             upper_input = team.upper()
-            team_id = id_util.GetPHLHockeyTeamID(upper_input)
-            logo_url = logos_util.GetNFLLogo(team_id)
+            team_id = id_util.GetPHLTeamID(upper_input)
+            logo_url = logos_util.GetPHLLogo(team_id)
 
             discord_id = interaction.user.mention
-            res = api_requests.RegisterFBTeam(True, team_id, discord_id)
+            res = api_requests.RegisterHCTeam(True, team_id, discord_id)
             if res == True:
                 embed = discord.Embed(colour=discord.Colour.dark_gold(),
                     description=f"Congratulations! You will now be pinged whenever {team}'s games are streamed.",
@@ -152,7 +152,6 @@ class assign_id(commands.Cog):
                 await interaction.response.send_message(embed=embed)
         except Exception as e:
             print(f"Error occured: {e}")
-
 
 async def setup(client: commands.Bot):
     await client.add_cog(assign_id(client))
