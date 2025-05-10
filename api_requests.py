@@ -221,7 +221,7 @@ def CompareTwoPHLTeams(t1, t2):
         return res.json()
     return False
 
-def GetCHLHockeyTeam(id):
+def GetCollegeHockeyTeam(id):
     res = requests.get(f"{hck_url}ds/chl/team/{id}")
     if res.status_code == 200:
         return res.json()
