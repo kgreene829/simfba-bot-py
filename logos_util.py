@@ -1732,10 +1732,200 @@ def GetNFLLogo(team):
         return logos.logo_book["SEA_Seahawks"]
 
 def GetCHLLogo(team):
-    if team == 38:
+    if team == 1:
+        return logos.logo_book["AF"]
+    elif team == 2:
+        return logos.logo_book["Fairbanks"]
+    elif team == 3:
+        return logos.logo_book["Anchorage"]
+    elif team == 4:
+        return logos.logo_book["AIC"]
+    elif team == 5:
+        return logos.logo_book["ArizonaState"]
+    elif team == 6:
+        return logos.logo_book["Army"]
+    elif team == 7:
+        return logos.logo_book["Augustana"]
+    elif team == 8:
+        return logos.logo_book["BemidjiState"]
+    elif team == 9:
+        return logos.logo_book["Bentley"]
+    elif team == 10:
+        return logos.logo_book["BostonCollege"]
+    elif team == 11:
+        return logos.logo_book["BostonU"]
+    elif team == 12:
+        return logos.logo_book["BowlingGreen"]
+    elif team == 13:
+        return logos.logo_book["Brown"]
+    elif team == 14:
+        return logos.logo_book["Canisius"]
+    elif team == 15:
+        return logos.logo_book["Clarkson"]
+    elif team == 16:
+        return logos.logo_book["Colgate"]
+    elif team == 17:
+        return logos.logo_book["CC"]
+    elif team == 18:
+        return logos.logo_book["UConn"]
+    elif team == 19:
+        return logos.logo_book["Cornell"]
+    elif team == 20:
+        return logos.logo_book["Dartmouth"]
+    elif team == 21:
+        return logos.logo_book["Denver"]
+    elif team == 22:
+        return logos.logo_book["FerrisState"]
+    elif team == 23:
+        return logos.logo_book["Harvard"]
+    elif team == 24:
+        return logos.logo_book["HolyCross"]
+    elif team == 25:
+        return logos.logo_book["LakeSuperiorState"]
+    elif team == 26:
+        return logos.logo_book["Lindenwood"]
+    elif team == 27:
+        return logos.logo_book["LongIsland"]
+    elif team == 28:
+        return logos.logo_book["Maine"]
+    elif team == 29:
+        return logos.logo_book["UMass"]
+    elif team == 30:
+        return logos.logo_book["UMassLowell"]
+    elif team == 31:
+        return logos.logo_book["Mercyhurst"]
+    elif team == 32:
+        return logos.logo_book["Merrimack"]
+    elif team == 33:
+        return logos.logo_book["MiamiOH"]
+    elif team == 34:
+        return logos.logo_book["Michigan"]
+    elif team == 35:
+        return logos.logo_book["MichiganState"]
+    elif team == 36:
+        return logos.logo_book["MichiganTech"]
+    elif team == 37:
+        return logos.logo_book["Minnesota"]
+    elif team == 38:
         return logos.logo_book["Minnesota-Duluth"]
-    if team == 63:
+    elif team == 39:
+        return logos.logo_book["MinnesotaState"]
+    elif team == 40:
+        return logos.logo_book["NewHampshire"]
+    elif team == 41:
+        return logos.logo_book["Niagara"]
+    elif team == 42:
+        return logos.logo_book["NorthDakota"]
+    elif team == 43:
+        return logos.logo_book["Northeastern"]
+    elif team == 44:
+        return logos.logo_book["NorthernMichigan"]
+    elif team == 45:
+        return logos.logo_book["NotreDame"]
+    elif team == 46:
+        return logos.logo_book["OhioState"]
+    elif team == 47:
+        return logos.logo_book["Omaha"]
+    elif team == 48:
+        return logos.logo_book["PennState"]
+    elif team == 49:
+        return logos.logo_book["Princeton"]
+    elif team == 50:
+        return logos.logo_book["Providence"]
+    elif team == 51:
+        return logos.logo_book["Quinnipiac"]
+    elif team == 52:
+        return logos.logo_book["RPI"]
+    elif team == 53:
+        return logos.logo_book["RobertMorris"]
+    elif team == 54:
+        return logos.logo_book["Rochester"]
+    elif team == 55:
+        return logos.logo_book["SacredHeart"]
+    elif team == 56:
+        return logos.logo_book["StCloudState"]
+    elif team == 57:
+        return logos.logo_book["StLawrence"]
+    elif team == 58:
+        return logos.logo_book["StThomas"]
+    elif team == 59:
+        return logos.logo_book["Stonehill"]
+    elif team == 60:
+        return logos.logo_book["Union"]
+    elif team == 61:
+        return logos.logo_book["Vermont"]
+    elif team == 62:
+        return logos.logo_book["WMU"]
+    elif team == 63:
         return logos.logo_book["Wisconsin"]
+    elif team == 64:
+        return logos.logo_book["Yale"]
+    elif team == 65:
+        return logos.logo_book["TSU"]
+    elif team == 66:
+        return logos.logo_book["Binghamton"]
+    elif team == 67:
+        return logos.logo_book["SFU"]
+    elif team == 68:
+        return logos.logo_book["UAH"]
+    elif team == 69:
+        return logos.logo_book["UNLV"]
+    elif team == 70:
+        return logos.logo_book["StOlafs"]
+    elif team == 71:
+        return logos.logo_book["West_Virginia"]
+    elif team == 72:
+        return logos.logo_book["Minot"]
+
+def GetPHLLogo(team):
+    if team == 1:
+        return logos.logo_book["MONT"]
+    elif team == 2:
+        return logos.logo_book["OTT"]
+    elif team == 3:
+        return logos.logo_book["TOR"]
+    elif team == 4:
+        return logos.logo_book["CBJ"]
+    elif team == 5:
+        return logos.logo_book["QUE"]
+    elif team == 6:
+        return logos.logo_book["NYR"]
+    elif team == 7:
+        return logos.logo_book["DET"]
+    elif team == 8:
+        return logos.logo_book["FLA"]
+    elif team == 9:
+        return logos.logo_book["PHI"]
+    elif team == 10:
+        return logos.logo_book["PIT"]
+    elif team == 11:
+        return logos.logo_book["ATL"]
+    elif team == 12:
+        return logos.logo_book["NASH"]
+    elif team == 13:
+        return logos.logo_book["CHI"]
+    elif team == 14:
+        return logos.logo_book["COL"]
+    elif team == 15:
+        return logos.logo_book["MNS"]
+    elif team == 16:
+        return logos.logo_book["KCS"]
+    elif team == 17:
+        return logos.logo_book["CALG"]
+    elif team == 18:
+        return logos.logo_book["EDM"]
+    elif team == 19:
+        return logos.logo_book["ANA"]
+    elif team == 20:
+        return logos.logo_book["SJ"]
+    elif team == 21:
+        return logos.logo_book["SEA"]
+    elif team == 22:
+        return logos.logo_book["VAN"]
+    elif team == 23:
+        return logos.logo_book["VGK"]
+    elif team == 24:
+        return logos.logo_book["CAL"]
 
 def GetIcon(icon: str):
     return logos.icon_book[icon]
