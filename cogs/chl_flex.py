@@ -8,7 +8,7 @@ import api_requests
 class chl_flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="chl_flex", description="Compare the wins between two CHL Programs. Input two {teams}")
+    @app_commands.command(name="chl_flex", description="Compare the wins between two CHL programs. Input two {teams}")
     async def chl_flex(self, interaction: discord.Integration, t1: str, t2: str):
         t1_upper = t1.upper()
         t2_upper = t2.upper()
