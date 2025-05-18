@@ -185,6 +185,7 @@ def GetPriorityFields(data):
           "name": "Agility",
           "value": data['Agility'],
           "inline": True,
+        },
         {
           "name": "Goalkeeping",
           "value": data['Goalkeeping'],
@@ -204,6 +205,16 @@ def GetPriorityFields(data):
     attrList.insert(0, {
           "name": "Overall",
           "value": data['Overall'],
+          "inline": True,
+        })
+        attrList.append({
+          "name": "Stamina",
+          "value": data['Stamina'],
+          "inline": True,
+        })
+    attrList.append({
+          "name": "Injury",
+          "value": data['InjuryRating'],
           "inline": True,
         })
     return attrList
