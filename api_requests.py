@@ -10,37 +10,37 @@ hck_url = "https://simhck-hqd2bme9gse5d7g9.westus-01.azurewebsites.net/api/"
 # bba_url = bba_test_url
 
 def GetCollegeBasketballTeam(id):
-    res = requests.get(f"{bba_url}dis/cbb/team/{id}")
+    res = requests.get(f"{bba_url}ds/cbb/team/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
 def GetCollegeBasketballPlayer(first_name, last_name, id):
-    res = requests.get(f"{bba_url}dis/cbb/player/name/{first_name}/{last_name}/{id}")
+    res = requests.get(f"{bba_url}ds/cbb/player/name/{first_name}/{last_name}/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
 def GetCollegeBasketballPlayer_id(id):
-    res = requests.get(f"{bba_url}dis/cbb/player/id/{id}")
+    res = requests.get(f"{bba_url}ds/cbb/player/id/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
 def GetNBABasketballPlayer_id(id):
-    res = requests.get(f"{bba_url}dis/nba/player/id/{id}")
+    res = requests.get(f"{bba_url}ds/nba/player/id/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
 def GetNBABasketballTeam(id):
-    res = requests.get(f"{bba_url}dis/nba/team/{id}")
+    res = requests.get(f"{bba_url}ds/nba/team/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
 def GetNBABasketballPlayer(first_name, last_name, id):
-    res = requests.get(f"{bba_url}dis/nba/player/name/{first_name}/{last_name}/{id}")
+    res = requests.get(f"{bba_url}ds/nba/player/name/{first_name}/{last_name}/{id}")
     if res.status_code == 200:
         return res.json()
     return False
@@ -117,14 +117,50 @@ def GetCollegeFootballCroot(id):
         return res.json()
     return False
 
+def GetCollegeFootballCrootName(first_name, last_name):
+    res = requests.get(f"{fba_url}ds/cfb/croot/name/{first_name}/{last_name}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
 def GetCollegeFootballCrootingClass(id):
     res = requests.get(f"{fba_url}ds/cfb/croots/class/{id}")
     if res.status_code == 200:
         return res.json()
     return False
 
+def GetCollegeBasketballCroot(id):
+    res = requests.get(f"{bba_url}ds/cbb/croot/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetCollegeBasketballCrootName(first_name, last_name):
+    res = requests.get(f"{bba_url}ds/cbb/croot/name/{first_name}/{last_name}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetCollegeBasketballCrootingClass(id):
+    res = requests.get(f"{bba_url}ds/cbb/croots/class/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
 def GetCollegeFootballConfStandings(id):
     res = requests.get(f"{fba_url}ds/cfb/conference/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetCollegeBasketballConfStandings(id):
+    res = requests.get(f"{bba_url}ds/cbb/conf/standings/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetNBABasketballConfStandings(id):
+    res = requests.get(f"{bba_url}ds/nba/conf/standings/{id}")
     if res.status_code == 200:
         return res.json()
     return False
