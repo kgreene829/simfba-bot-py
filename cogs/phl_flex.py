@@ -29,7 +29,7 @@ class phl_flex(commands.Cog):
         else:
             latest_win = data["LatestWin"]
             team_id = id_util.GetPHLTeamID(data["LatestWin"].upper())
-            latest_win_url = logos_util.GetCFBLogo(team_id)
+            latest_win_url = logos_util.GetphlLogo(team_id)
             current_streak = data["CurrentStreak"]
             team_one_wins = data["TeamOneWins"]
             team_one_losses = data["TeamOneLosses"]
