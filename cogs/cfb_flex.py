@@ -8,7 +8,7 @@ import api_requests
 class cfb_flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_flex", description="Compare the wins between two CFB Programs. Input two {teams}")
+    @app_commands.command(name="cfb_flex", description="Compare the wins between two CFB programs. Input two {teams}")
     async def cfb_flex(self, interaction: discord.Integration, t1: str, t2: str):
         t1_upper = t1.upper()
         t2_upper = t2.upper()
