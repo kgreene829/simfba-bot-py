@@ -78,12 +78,7 @@ class phl_team(commands.Cog):
                     if x >= len(matches)-4:
                         is_complete = m['GameComplete']
                         match_description = ""
-                        IsNeutralSite = ""
-                        IsConference = ""
-                        IsPlayoffGame = ""
-                        IsRivalryGame = ""
                         match_arena = f"{m['Arena']}"
-                        ovr_desc = ""
                         match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
                         if is_complete == True:
                             match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
