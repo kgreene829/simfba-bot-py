@@ -73,14 +73,7 @@ class nba_team(commands.Cog):
                         if x >= len(matches)-4:
                             is_complete = m['GameComplete']
                             match_description = ""
-                            neutral_label = ""
-                            conf_label = ""
-                            conf_tourney_label = ""
-                            bowl_label =""
-                            playoff_label = ""
-                            natty_label = ""
                             match_arena = f"{m['Arena']}"
-                            ovr_desc = ""
                             match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
                             if is_complete == True:
                                 match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
@@ -144,14 +137,7 @@ class nba_team(commands.Cog):
                         if x >= len(matches)-4:
                             is_complete = m['GameComplete']
                             match_description = ""
-                            neutral_label = ""
-                            conf_label = ""
-                            conf_tourney_label = ""
-                            bowl_label =""
-                            playoff_label = ""
-                            natty_label = ""
                             match_arena = f"{m['Arena']}"
-                            ovr_desc = ""
                             match = f"{m['AwayTeam']} at {m['HomeTeam']} | At {match_arena}"
                             if is_complete == True:
                                 match_description = f"{m['AwayTeamScore']}-{m['HomeTeamScore']}"
