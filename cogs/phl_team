@@ -19,7 +19,7 @@ class phl_team(commands.Cog):
         else:
             team_data = data["Team"]
             title = f"{team_data['TeamName']} {team_data['Mascot']}"
-            desc = f"Team based in {team_data['City']}, {team_data['State']}. Members of the {team_data['Conference']} {team_data['Division']}."
+            desc = f"Team based in {team_data['City']}, {team_data['State']}, {team_data['Country']}. Members of the {team_data['Conference']} {team_data['Division']}."
             embed = discord.Embed(colour=discord.Colour.dark_gold(),
                                 description=desc,
                                 title=title)
@@ -58,7 +58,7 @@ class phl_team(commands.Cog):
                 embed.add_field(name="Scout", value=scout, inline=True)
             if marketing != "AI":
                 embed.add_field(name="Marketing", value=marketing, inline=True)
-            embed.add_field(name="Stadium", value=team_data['Stadium'], inline=False)
+            embed.add_field(name="Arena", value=team_data['Arena'], inline=False)
             a_rank_label = ''
             h_rank_label = ''
 
