@@ -1733,7 +1733,7 @@ def GetNFLLogo(team):
 
 def GetCHLLogo(team):
     if team == 1:
-        return logos.logo_book["AF"]
+        return logos.logo_book["USAF"]
     elif team == 2:
         return logos.logo_book["Fairbanks"]
     elif team == 3:
