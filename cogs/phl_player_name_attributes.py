@@ -23,7 +23,7 @@ class phl_player_name_attributes(commands.Cog):
                 if {data['City']} == {data['State']}:
                     desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
                 else:
-                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']} {data['State']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
                 attrlist = hockey_player_builder.GetPriorityFields(data)
                 logo_url = logos_util.GetPHLLogo(team_id)
                 embed = discord.Embed(colour=discord.Colour.gold(),
