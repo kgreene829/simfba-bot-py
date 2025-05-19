@@ -20,7 +20,7 @@ class chl_player_id_attributes(commands.Cog):
                 if {data['City']} == {data['State']}:
                     desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
                 else:
-                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']} {data['State']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
                 attrlist = hockey_player_builder.GetPriorityFields(data)
                 team_id = id_util.GetCollegeHockeyTeamID(data['Team'].upper())
                 logo_url = logos_util.GetCHLLogo(team_id)
