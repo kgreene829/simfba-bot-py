@@ -21,7 +21,7 @@ class chl_croot(commands.Cog):
                 if {data['City']} == {data['State']}:
                     desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
                 else:
-                    desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {data['City']} {data['State']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
                 attrlist = croot_hockey_player_builder.GetPriorityFields(data)
                 team_id = id_util.GetCollegeHockeyTeamID(data["College"].upper())
                 logo_url = logos_util.GetCHLLogo(team_id)
