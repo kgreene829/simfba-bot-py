@@ -105,5 +105,53 @@ class assign_id(commands.Cog):
         except Exception as e:
             print(f"Error occured: {e}")
 
+    @app_commands.command(name="chl_register", description="Register to your CHL team so you will be tagged when games stream!")
+    async def chl_register(self, interaction: discord.Interaction, team: str):
+        try:
+            upper_input = team.upper()
+            team_id = id_util.GetCollegeHockeyTeamID(upper_input)
+            logo_url = logos_util.GetCHLLogo(team_id)
+
+            discord_id = interaction.user.mention
+            res = api_requests.RegisterHCTeam(False, team_id, discord_id)
+            if res == True:
+                embed = discord.Embed(colour=discord.Colour.dark_gold(),
+                    description=f"Congratulations! You will now be pinged whenever {team}'s games are streamed.",
+                    title=f"Successfully Registered to {team}!")
+                embed.set_thumbnail(url=logo_url)
+                await interaction.response.send_message(embed=embed)
+            else:
+                embed = discord.Embed(colour=discord.Colour.dark_gold(),
+                    description=f"Don't worry, you did nothing wrong. Something technical occurred and will be resolved. Please post in forums for details.",
+                    title=f"Error! Could not register to {team}!")
+                embed.set_thumbnail(url=logo_url)
+                await interaction.response.send_message(embed=embed)
+        except Exception as e:
+            print(f"Error occured: {e}")
+
+    @app_commands.command(name="phl_register", description="Register to your PHL team so you will be tagged when games stream!")
+    async def phl_register(self, interaction: discord.Interaction, team: str):
+        try:
+            upper_input = team.upper()
+            team_id = id_util.GetPHLTeamID(upper_input)
+            logo_url = logos_util.GetPHLLogo(team_id)
+
+            discord_id = interaction.user.mention
+            res = api_requests.RegisterHCTeam(True, team_id, discord_id)
+            if res == True:
+                embed = discord.Embed(colour=discord.Colour.dark_gold(),
+                    description=f"Congratulations! You will now be pinged whenever {team}'s games are streamed.",
+                    title=f"Successfully Registered to {team}!")
+                embed.set_thumbnail(url=logo_url)
+                await interaction.response.send_message(embed=embed)
+            else:
+                embed = discord.Embed(colour=discord.Colour.dark_gold(),
+                    description=f"Don't worry, you did nothing wrong. Something technical occurred and will be resolved. Please post in forums for details.",
+                    title=f"Error! Could not register to {team}!")
+                embed.set_thumbnail(url=logo_url)
+                await interaction.response.send_message(embed=embed)
+        except Exception as e:
+            print(f"Error occured: {e}")
+
 async def setup(client: commands.Bot):
     await client.add_cog(assign_id(client))

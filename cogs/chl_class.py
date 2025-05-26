@@ -5,16 +5,16 @@ import logos_util
 import id_util
 import api_requests
 
-class cfb_class(commands.Cog):
+class chl_class(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_class", description="Look up a college football teams crooting class")
-    async def cfb_class(self, interaction: discord.Interaction, team: str):
+    @app_commands.command(name="chl_class", description="Look up a college hockey teams crooting class")
+    async def chl_class(self, interaction: discord.Interaction, team: str):
         upper_input = team.upper()
-        team_id = id_util.GetCollegeFootballTeamID(upper_input)
-        logo_url = logos_util.GetCFBLogo(team_id)
-        data = api_requests.GetCollegeFootballCrootingClass(team_id)
-        team = api_requests.GetCollegeFootballTeam(team_id)
+        team_id = id_util.GetCollegeHockeyTeamID(upper_input)
+        logo_url = logos_util.GetCHLLogo(team_id)
+        data = api_requests.GetCollegeHockeyCrootingClass(team_id)
+        team = api_requests.GetCollegeHockeyTeam(team_id)
         if data == False:
             await interaction.response.send_message(f"Could not find team: {input}")
         else:
@@ -30,7 +30,7 @@ class cfb_class(commands.Cog):
             embed.add_field(name="ESPN Score", value=round(data['ESPNScore'],2), inline=True)
             embed.add_field(name="Rivals Score", value=round(data['RivalsScore'],2), inline=True)
             embed.add_field(name="247 Score", value=round(data['Rank247Score'],2), inline=True)
-            
+
             try:
                 for i in recruits:
                     recruit = recruits[a]["Recruit"]
@@ -39,12 +39,11 @@ class cfb_class(commands.Cog):
                     
                     a += 1
 
-
             except TypeError:
                 embed.add_field(name="", value=f"{data['Team']} has not signed any croots", inline=False)
 
             embed.set_thumbnail(url=logo_url)
             await interaction.response.send_message(embed=embed)
-                
+            
 async def setup(client: commands.Bot):
-    await client.add_cog(cfb_class(client))
+    await client.add_cog(chl_class(client))

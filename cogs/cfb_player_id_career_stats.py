@@ -17,8 +17,23 @@ class cfb_player_id_career_stats(commands.Cog):
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
                 stats = data["SeasonStats"]
-                title = f"{data['FirstName']} {data['LastName']} {data['Position']}"
-                desc = f"{data['Stars']} Star {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}"
+                year = data["Year"]
+                open = ""
+                close = ""
+                if data["IsRedshirt"] == True:
+                    year = year-1
+                    open = "("
+                    close = ")"
+                if year == 1:
+                    year = "Fr"
+                elif year == 2:
+                    year = "So"
+                elif year == 3:
+                    year = "Jr"
+                elif year == 4:
+                    year = "Sr"
+                title = f"{data['FirstName']} {data['LastName']} {data['Position']} {data['ID']}"
+                desc = f"{data['Stars']} Star {open}{year}{close} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}"
                 team_id = id_util.GetCollegeFootballTeamID(data['TeamAbbr'].upper())
                 logo_url = logos_util.GetCFBLogo(team_id)
                 embed_player = discord.Embed(colour=discord.Colour.gold(),

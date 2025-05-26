@@ -5,20 +5,20 @@ import logos_util
 import id_util
 import api_requests
 
-class cfb_flex(commands.Cog):
+class nfl_flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cfb_flex", description="Compare the wins between two CFB programs. Input two {teams}")
-    async def cfb_flex(self, interaction: discord.Integration, t1: str, t2: str):
+    @app_commands.command(name="nfl_flex", description="Compare the wins between two NFL teams. Input two {teams}")
+    async def nfl_flex(self, interaction: discord.Integration, t1: str, t2: str):
         t1_upper = t1.upper()
         t2_upper = t2.upper()
-        team_one_id = id_util.GetCollegeFootballTeamID(t1_upper)
-        team_two_id = id_util.GetCollegeFootballTeamID(t2_upper)
-        data = api_requests.CompareTwoCFBTeams(team_one_id, team_two_id)
+        team_one_id = id_util.GetNFLTeamID(t1_upper)
+        team_two_id = id_util.GetNFLTeamID(t2_upper)
+        data = api_requests.CompareTwoNFLTeams(team_one_id, team_two_id)
         if data == False:
-            await interaction.response.send_message(f"Could not find team based on the provided teams: {t1} {t2}")
+            await interaction.response.send_message(f"These teams have never played against each other")
         elif data["LatestWin"] == "":
-            team_one_url = logos_util.GetCFBLogo(team_one_id)
+            team_one_url = logos_util.GetNFLLogo(team_one_id)
             title = f"{t1} and {t2} have never played against each other"
             desc = ""
             embed = discord.Embed(colour=discord.Colour.dark_gold(),
@@ -28,8 +28,8 @@ class cfb_flex(commands.Cog):
             await interaction.response.send_message(embed=embed)
         else:
             latest_win = data["LatestWin"]
-            team_id = id_util.GetCollegeFootballTeamID(data["LatestWin"].upper())
-            latest_win_url = logos_util.GetCFBLogo(team_id)
+            team_id = id_util.GetNFLTeamID(data["LatestWin"].upper())
+            latest_win_url = logos_util.GetNFLLogo(team_id)
             current_streak = data["CurrentStreak"]
             team_one_wins = data["TeamOneWins"]
             team_one_losses = data["TeamOneLosses"]
@@ -56,8 +56,9 @@ class cfb_flex(commands.Cog):
             embed.add_field(name=f"{t2} Best Streak", value=team_two_streak, inline=True)
             if team_two_season > 0:
                 embed.add_field(name=f"{t2} Largest Margin of Victory", value=f"{team_two_margin_score}, {team_two_season}", inline=True)
-            embed.set_thumbnail(url=latest_win_url)
-            await interaction.response.send_message(embed=embed)
+                embed.set_thumbnail(url=latest_win_url)
+                await interaction.response.send_message(embed=embed)
 
 async def setup(client: commands.Bot):
-    await client.add_cog(cfb_flex(client))
+    await client.add_cog(nfl_flex(client))
+
