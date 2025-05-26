@@ -207,7 +207,7 @@ def GetPriorityFields(data):
           "value": data['Overall'],
           "inline": True,
         })
-        attrList.append({
+    attrList.append({
           "name": "Stamina",
           "value": data['Stamina'],
           "inline": True,

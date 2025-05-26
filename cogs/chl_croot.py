@@ -66,7 +66,7 @@ class chl_croot(commands.Cog):
 
 
                 embed.set_thumbnail(url=logo_url)
-                embed.set_footer(text="SimFBA Association")
+                embed.set_footer(text="Simulation Sports Network")
                 await interaction.response.send_message(embed=embed)
         except Exception as e:
             print(f"Error occured: {e}")

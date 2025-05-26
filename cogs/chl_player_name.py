@@ -1,29 +1,80 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
+from helper import hockey_player_builder
 import logos_util
 import id_util
 import api_requests
 
-class phl_player_name_stats(commands.Cog):
+class chl_player_name(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="phl_player_name_stats", description="Look up a profesional hockey player using a {first name}, {last name}, and {team}")
-    async def phl_player_name_stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
+
+    chl_player_name_group = app_commands.Group(name="chl_player_name", description="CHL Player by Name")
+
+    @chl_player_name_group.command(name="attributes", description="Look up a college hockey player using a {first name}, {last name}, and {team}")
+    async def attributes(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
         try:
             team_abbreviation = team.upper()
-            team_id = id_util.GetPHLTeamID(team_abbreviation)
-            logo_url = logos_util.GetPHLLogo(team_id)
-            data = api_requests.GetPHLHockeyPlayer(first_name, last_name, team_id)
+            team_id = id_util.GetCollegeHockeyTeamID(team_abbreviation)
+            logo_url = logos_util.GetCHLLogo(team_id)
+            data = api_requests.GetCollegeHockeyPlayer(first_name, last_name, team_id)
             if data == False:
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
-                stats = data["ProStats"]
+                title = f"{data['FirstName']} {data['LastName']} {data['PlayerID']}"
+                if {data['City']} == {data['State']}:
+                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
+                else:
+                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
+                attrlist = hockey_player_builder.GetPriorityFields(data)
+                logo_url = logos_util.GetCHLLogo(team_id)
+                embed = discord.Embed(colour=discord.Colour.gold(),
+                                    description=desc,
+                                    title=title)
+                # Player Attribute Embeds
+                for x in attrlist:
+                    embed.add_field(name=x['name'], value=x['value'], inline=x['inline'])
+
+                embed.set_thumbnail(url=logo_url)
+                embed.set_footer(text="Simulation Sports Network")
+                await interaction.response.send_message(embed=embed)
+        except Exception as e:
+            print(f"Error occured: {e}")
+
+    @chl_player_name_group.command(name="stats", description="Look up a college hockey player using a {first name}, {last name}, and {team}")
+    async def stats(self, interaction: discord.Interaction, first_name: str, last_name: str, team: str):
+        try:
+            team_abbreviation = team.upper()
+            team_id = id_util.GetCollegeHockeyTeamID(team_abbreviation)
+            logo_url = logos_util.GetCHLLogo(team_id)
+            data = api_requests.GetCollegeHockeyPlayer(first_name, last_name, team_id)
+            if data == False:
+                await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
+            else:
+                stats = data["CollegeStats"]
+                year = data["Year"]
+                open = ""
+                close = ""
+                if data["IsRedshirt"] == True:
+                    year = year-1
+                    open = "("
+                    close = ")"
+                if year == 1:
+                    year = "Fr"
+                elif year == 2:
+                    year = "So"
+                elif year == 3:
+                    year = "Jr"
+                elif year == 4:
+                    year = "Sr"
                 title = f"{data['FirstName']} {data['LastName']} {data['Position']} {data['PlayerID']}"
                 if {data['City']} == {data['State']}:
-                    desc = f"{data['Age']} years old {data['Year']} year veteran {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {open}{year}{close} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
                 else:
-                    desc = f"{data['Age']} years old {data['Year']} year veteran {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {open}{year}{close} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
+                team_id = id_util.GetCollegeHockeyTeamID(data['Team'].upper())
+                logo_url = logos_util.GetCHLLogo(team_id)
                 embed = discord.Embed(colour=discord.Colour.gold(),
                                     description=desc,
                                     title=title)
@@ -88,5 +139,6 @@ class phl_player_name_stats(commands.Cog):
         except Exception as e:
             print(f"Error occured: {e}")
 
+
 async def setup(client: commands.Bot):
-    await client.add_cog(phl_player_name_stats(client))
+    await client.add_cog(chl_player_name(client))
