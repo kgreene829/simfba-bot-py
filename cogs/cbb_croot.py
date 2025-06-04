@@ -75,7 +75,7 @@ class cbb_croot(commands.Cog):
                     embed.add_field(name="", value=f"{data[0]['FirstName']} {data[0]['LastName']} has no leading teams", inline=False)
 
                 embed.set_thumbnail(url=logo_url)
-                embed.set_footer(text="SimFBA Association")
+                embed.set_footer(text="Simulation Sports Network")
                 await interaction.response.send_message(embed=embed)
         except Exception as e:
             print(f"Error occured: {e}")

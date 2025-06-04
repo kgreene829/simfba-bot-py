@@ -2,36 +2,118 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 from helper import cbb_stream_builder
+from helper import nba_stream_builder
 import settings
 
-channel_id = settings.CBB_STREAM_CHANNEL
+cbb_channel_id = settings.CBB_STREAM_CHANNEL
+tbs_channel_id = settings.TBS_STREAM_CHANNEL
+espn_channel_id = settings.ESPN_STREAM_CHANNEL
+espn2_channel_id = settings.ESPN2_STREAM_CHANNEL
 
-class BBA_Stream(commands.Cog):
+class CBB_Stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-    @app_commands.command(name="cbb_a", description="The timeslot you'd like to stream")
-    async def a(self, interaction: discord.Integration, input: str):
-        chan = self.client.get_channel(channel_id)
+
+    cbb_stream_group = app_commands.Group(name="bba_streams", description="Stream SimCBB Games")
+
+
+    @cbb_stream_group.command(name="cbb_a", description="The timeslot you'd like to stream")
+    async def cbb_a(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(cbb_channel_id)
         await interaction.response.send_message("Loading SimBBA CBS Games...")
         await cbb_stream_builder.stream_cbb_game(chan, 'cbs', input, 'a')
 
-    @app_commands.command(name="cbb_b", description="The timeslot you'd like to stream")
-    async def b(self, interaction: discord.Integration, input: str):
-        chan = self.client.get_channel(channel_id)
+    @cbb_stream_group.command(name="cbb_b", description="The timeslot you'd like to stream")
+    async def cbb_b(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(cbb_channel_id)
         await interaction.response.send_message("Loading SimBBA CBS Games...")
         await cbb_stream_builder.stream_cbb_game(chan, 'cbs', input, 'b')
 
-    @app_commands.command(name="cbb_c", description="The timeslot you'd like to stream")
-    async def c(self, interaction: discord.Integration, input: str):
-        chan = self.client.get_channel(channel_id)
+    @cbb_stream_group.command(name="cbb_c", description="The timeslot you'd like to stream")
+    async def cbb_c(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(cbb_channel_id)
         await interaction.response.send_message("Loading SimBBA CBS Games...")
         await cbb_stream_builder.stream_cbb_game(chan, 'cbs', input, 'c')
 
-    @app_commands.command(name="cbb_d", description="The timeslot you'd like to stream")
-    async def d(self, interaction: discord.Integration, input: str):
-            chan = self.client.get_channel(channel_id)
+    @cbb_stream_group.command(name="cbb_d", description="The timeslot you'd like to stream")
+    async def cbb_d(self, interaction: discord.Integration, input: str):
+            chan = self.client.get_channel(cbb_channel_id)
             await interaction.response.send_message("Loading SimBBA CBS Games...")
             await cbb_stream_builder.stream_cbb_game(chan, 'cbs', input, 'd')
 
+
+    @cbb_stream_group.command(name="espn_a", description="The timeslot you'd like to stream")
+    async def espn_a(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn', input, 'a')
+
+    @cbb_stream_group.command(name="espn_b", description="The timeslot you'd like to stream")
+    async def espn_b(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn', input, 'b')
+
+    @cbb_stream_group.command(name="espn_c", description="The timeslot you'd like to stream")
+    async def espn_c(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn', input, 'c')
+
+    @cbb_stream_group.command(name="espn_d", description="The timeslot you'd like to stream")
+    async def espn_d(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn', input, 'd')
+
+    @cbb_stream_group.command(name="espn_2_a", description="The timeslot you'd like to stream")
+    async def espn2_a(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn2_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn2', input, 'a')
+
+    @cbb_stream_group.command(name="espn_2_b", description="The timeslot you'd like to stream")
+    async def espn2_b(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn2_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn2', input, 'b')
+
+    @cbb_stream_group.command(name="espn_2_c", description="The timeslot you'd like to stream")
+    async def espn2_c(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn2_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn2', input, 'c')
+
+    @cbb_stream_group.command(name="espn_2_d", description="The timeslot you'd like to stream")
+    async def espn2_d(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(espn2_channel_id)
+        await interaction.response.send_message("Loading SimBBA ESPN Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'espn2', input, 'd')
+
+    @cbb_stream_group.command(name="tbs_a", description="The timeslot you'd like to stream")
+    async def tbs_a(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(tbs_channel_id)
+        await interaction.response.send_message("Loading SimBBA TBS Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'tbs', input, 'a')
+
+    @cbb_stream_group.command(name="tbs_b", description="The timeslot you'd like to stream")
+    async def tbs_b(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(tbs_channel_id)
+        await interaction.response.send_message("Loading SimBBA TBS Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'tbs', input, 'b')
+
+    @cbb_stream_group.command(name="tbs_c", description="The timeslot you'd like to stream")
+    async def tbs_c(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(tbs_channel_id)
+        await interaction.response.send_message("Loading SimBBA TBS Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'tbs', input, 'c')
+
+    @cbb_stream_group.command(name="tbs_d", description="The timeslot you'd like to stream")
+    async def tbs_d(self, interaction: discord.Integration, input: str):
+        chan = self.client.get_channel(tbs_channel_id)
+        await interaction.response.send_message("Loading SimBBA TBS Games...")
+        await cbb_stream_builder.stream_cbb_game(chan, 'tbs', input, 'd')
+
+
 async def setup(client: commands.Bot):
-    await client.add_cog(BBA_Stream(client))
+    await client.add_cog(CBB_Stream(client))

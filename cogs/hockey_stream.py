@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-from helper import hockey_stream_builder, message_sender
+from helper import hockey_stream_builder
 import settings
 import asyncio
 
