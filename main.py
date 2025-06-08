@@ -15,12 +15,12 @@ class MyClient(commands.Bot):
         for filename in list_dir:
                 if filename.endswith('.py'):
                     await self.load_extension(f'cogs.{filename[:-3]}')
-        
-    async def on_ready(self):
         self.tree.copy_global_to(guild=settings.GUILDS_ID)
         synced = await self.tree.sync(guild=settings.GUILDS_ID)
+        print(f'Slash CMDs Synced: {len(synced)}')
+        
+    async def on_ready(self):
         print(f'Logged on as {self.user}!')
-        print("Slash CMDs Synced: " + str(len(synced)))
 
     async def on_error(self, event, *args, **kwargs):
         print(f"An error occurred in event {event}, args: {args}, kwargs: {kwargs}")

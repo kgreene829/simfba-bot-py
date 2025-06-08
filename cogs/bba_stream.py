@@ -13,6 +13,7 @@ espn2_channel_id = settings.ESPN2_STREAM_CHANNEL
 class CBB_Stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
+        client.tree.add_command(self.cbb_stream_group, guild=settings.GUILDS_ID)
 
     cbb_stream_group = app_commands.Group(name="bba_streams", description="Stream SimCBB Games")
 

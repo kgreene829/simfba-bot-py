@@ -90,8 +90,11 @@ def Get_Hockey_Play_Embed(play, home_abbr, away_abbr, home_url, away_url, home_s
     penalty = play["Penalty"]
     severity = play["Severity"]
     time_remaining = play["TimeOnClock"]
-    time_consumed = play["TimeConsumed"]
-    possession = play["Possession"]
+    time_consumed = play["SecondsConsumed"]
+    team_id = play["TeamID"]
+    possession = home_abbr
+    if team_id == play["AwayTeamID"]:
+        possession = away_abbr
     result = play["Result"]
     desc = f"Current Score: {home_abbr} {home_score} - {away_abbr} {away_score}"
     embed_url = ""

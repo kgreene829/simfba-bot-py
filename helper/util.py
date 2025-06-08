@@ -26,6 +26,10 @@ def PickBKAnnouncer():
     base_list = ['BK Toucan', 'DJ Byeson', 'Kenny', 'Jody', 'Madison', 'Ian', 'Joshua']
     return random.choice(base_list)
 
+def PickHKAnnouncer():
+    base_list = ['HK Toucan', 'HK Dante', 'Penny', 'Maurice']
+    return random.choice(base_list)
+
 def PickAnnouncer(league: str, home_id):
     # Specific Announcer Requests
     if home_id == 32 and league != 'nfl':
@@ -70,6 +74,19 @@ def BKAnnouncerIntroText(announcer: str, ht: str, at: str, league: str, stadium:
     }
     return announcer_intro_book[announcer]
 
+def HKAnnouncerIntroText(announcer: str, ht: str, at: str, league: str, arena: str):
+    league_str = "SimCHL"
+    if league == 'phl':
+        league_str = "SimPHL"
+    announcer_intro_book = {
+      'HK Toucan': f"Hello and welcome to another exciting broadcast of the {league_str} show! I am your host, ToucanSoda, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {arena}!",
+      "Penny": f"What's up everybody, welcome to another {league_str} matchup at {arena}! I am your host, Penny, and today I will be covering the {ht} and the {at}!",
+      "HK Dante": f"Yo what's up and welcome to another exciting matchup of the {league_str} show! Dante the Bison here once again, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {arena}!",
+      "Maurice": f"Hey there, welcome to another exciting matchup of the {league_str} show! I am your host, Maurice the Moose, and today I will be covering the {ht} and the {at} in this very exciting matchup here at {arena}!",
+    }
+    return announcer_intro_book[announcer]
+
+
 def AnnouncerIntroText(announcer: str, ht: str, at: str, league: str, stadium: str):
     league_str = "SimCFB"
     if league == 'nfl':
@@ -97,3 +114,36 @@ def AnnouncerIntroText(announcer: str, ht: str, at: str, league: str, stadium: s
     'Versace':"Hunghhh... It's Versace... It's a beautiful day outside today, gonna tell you all about some football plays, we've got the Jayhawks out of Kansas, gonna call Rock Chalk with both eyes closed. Brrrrrrrrr!"
     }
     return announcer_intro_book[announcer]
+
+def GetHockeyLetterGrade(attr, year):
+    if year < 3:
+        if attr > 18:
+            return "A"
+        if attr > 12:
+            return "B"
+        if attr > 7:
+            return "C"
+        if attr > 4:
+            return "D"
+        return "F"
+    if attr > 24:
+        return "A+"
+    if attr > 21:
+        return "A"
+    if attr > 18:
+        return "A-"
+    if attr > 16:
+        return "B+"
+    if attr > 14:
+        return "B"
+    if attr > 12:
+        return "B-"
+    if attr > 10:
+        return "C+"
+    if attr > 8:
+        return "C"
+    if attr > 6:
+        return "C-"
+    if attr > 4:
+        return "D"
+    return "F"

@@ -4,10 +4,12 @@ from discord import app_commands
 import logos_util
 import id_util
 import api_requests
+import settings
 
 class nba_player_name(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
+        client.tree.add_command(self.nba_player_name_group, guild=settings.GUILDS_ID)
 
     nba_player_name_group = app_commands.Group(name="nba_player_name", description="NBA Player by Name")
 

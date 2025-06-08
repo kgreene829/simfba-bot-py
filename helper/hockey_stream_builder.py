@@ -1,109 +1,121 @@
 import discord
 import os
 import csv
-from helper import embed_builder, message_sender
+from helper import embed_builder, message_sender, util
 import constants
 import logos_util
 import id_util
 import asyncio
+from api_requests import StreamHockeyGames
 
-async def stream_hockey_game(chan, channel: str, week: str, day: str):
-    day_uppercase = day.upper()
+async def stream_hockey_game(chan, channel: str, league: str):
+    is_pro = league == 'phl'
+    streams = StreamHockeyGames(is_pro,channel)
     injury_url = logos_util.GetIcon("Injury")
-    week_directory = os.path.normpath(os.path.join(constants.base_hockey_path, channel, f"Week {week}", day_uppercase))
-    play_by_play_directory = os.path.normpath(os.path.join(week_directory, "play_by_plays"))
-    if os.path.exists(play_by_play_directory):
-        list_of_games = os.listdir(play_by_play_directory)
-        for filename in list_of_games:
-            contending_teams_str = ""
-            home_team_id = ""
-            away_team_id = ""
-            home_team_abbr = "WISC"
-            home_team = ""
-            away_team = ""
-            away_team_abbr = "UMD"
-            final_score = ""
-            count = 0
-            results = []
-            home_coach = "Bundy"
-            away_coach = "TuscanSota"
-            match_name = "The Winter Classic"
-            arena = "Wrigley Field"
-            city = "Chicago"
-            state = "IL"
-            if filename.endswith('.csv'):
-                game_path = os.path.normpath(os.path.join(play_by_play_directory, filename))
-                with open(game_path, newline="") as game:
-                    reader = csv.reader(game, delimiter=",", quotechar='"')
-                    total_rows = list(reader)
-                    for row in total_rows:
-                        if count == 1:
-                            count += 1
-                            continue
-                        elif count == 0:
-                            home_team_id = row[1]
-                            home_team = row[3].strip()
-                            away_team_id = row[5]
-                            away_team = row[7].strip()
-                            contending_teams_str = f"Home Team: {home_team} | Away Team: {away_team}"
-                            final_score = f"{home_team}: 4 | {away_team}: 3"
-                            count += 1
-                            continue
-                        else:
-                            score = {
-                                "Period": row[0],
-                                "Zone": row[3],
-                                "Event": row[4],
-                                "Outcome": row[5],
-                                "Penalty": row[6],
-                                "Severity": row[7],
-                                "IsFight": row[8],
-                                "HomeScore": row[9],
-                                "AwayScore": row[10],
-                                "TimeOnClock": row[1],
-                                "TimeConsumed": row[2],
-                                "Result": row[12].strip(),
-                                "Possession": row[11]
-                            }
-                            results.append(score)
-                        count += 1
+  
+    for game in streams:
+        total_rows = game["Streams"]
+        home_team = game["HomeTeam"]
+        home_id = game["HomeTeamID"]
+        home_rank = game["HomeTeamRank"]
+        home_coach = game["HomeTeamCoach"]
+        home_label = game["HomeLabel"]
+        home_tag = game["HomeTeamDiscordID"]
+        away_id = game["AwayTeamID"]
+        away_team = game["AwayTeam"]
+        away_tag = game["AwayTeamDiscordID"]
+        away_rank = game["AwayTeamRank"]
+        away_coach = game["AwayTeamCoach"]
+        away_label = game["AwayLabel"]
+        game_label = game["GameLabel"]
+        arena = game["Arena"]
+        city = game["City"]
+        state = game["State"]
+        country = game["Country"]
+        arena = game["Arena"]
+        attendance = game["Attendance"]
+        home_ranked_str = ""
+        if home_rank > 0:
+            home_ranked_str=f"({home_rank}) "
+        away_ranked_str = ""
+        if away_rank > 0:
+            away_ranked_str=f"({away_rank}) "
+        contending_teams_str = ""
+        hc_label = home_coach.strip()
+        ac_label = away_coach.strip()
+        if home_tag != "":
+            hc_label = home_tag
+        if away_tag != "":
+            ac_label = away_tag
+        contending_teams_str = f"Home Team: {home_ranked_str}{home_team} | Coach: {hc_label}"
+        contending_teams_str += f"\nAway Team: {away_ranked_str}{away_team} | Coach: {ac_label}"
+        ### Logos
+        home_url = ""
+        away_url = ""
+        if is_pro:
+            home_url = logos_util.GetPHLLogo(int(home_id))
+            away_url = logos_util.GetPHLLogo(int(away_id))    
+        else:
+            home_url = logos_util.GetCHLLogo(int(home_id))
+            away_url = logos_util.GetCHLLogo(int(away_id))
+        announcer = util.PickHKAnnouncer()
+        announcer_url = logos_util.GetAnnouncer(announcer)
+        intro_text = util.HKAnnouncerIntroText(announcer, home_label, away_label, league, arena)
 
-                    ### Logos
-                    home_url = logos_util.GetCHLLogo(int(home_team_id))
-                    away_url = logos_util.GetCHLLogo(int(away_team_id))
+        ### Build Announcer Embed
+        init_embed = discord.Embed(colour=discord.Colour.blue(),description=intro_text,title=f"Streaming {home_label} Match!")
+        init_embed.add_field(name="Announcer", value=announcer, inline=False)
+        init_embed.set_thumbnail(url=announcer_url)
+        await message_sender.SendEmbedMessage(chan, init_embed)
+        await asyncio.sleep(3)
 
-                    ### Build Initial Embed
-                    init_embed = discord.Embed(colour=discord.Colour.light_gray(),description=contending_teams_str,title="Streaming College Hockey Game!")
-                    if len(match_name) > 0:
-                        init_embed.add_field(name="Match Name", value=f"{match_name}", inline=False)
-                    init_embed.add_field(name=f"{arena}", value=f"{city}, {state}", inline=False)
-                    init_embed.add_field(name=f"Home Coach", value=f"{home_coach}", inline=True)
-                    init_embed.add_field(name=f"Away Coach", value=f"{away_coach}", inline=True)
-                    init_embed.set_thumbnail(url=home_url)
-                    await message_sender.SendEmbedMessage(chan, embed=init_embed)
+        ### Build Initial Embed
+        game_embed = discord.Embed(colour=discord.Colour.light_gray(),description=contending_teams_str,title="Streaming College Hockey Game!")
+        if len(game_label) > 0:
+            game_embed.add_field(name="Match Name", value=f"{game_label}", inline=False)
+        game_embed.add_field(name=f"{arena}", value=f"{city}, {state}, {country}", inline=False)
+        game_embed.add_field(name=f"Home Coach", value=f"{home_coach}", inline=True)
+        game_embed.add_field(name=f"Away Coach", value=f"{away_coach}", inline=True)
 
-                    home_score = 0
-                    away_score = 0
+        game_embed.set_thumbnail(url=home_url)
+        await message_sender.SendEmbedMessage(chan, embed=game_embed)
+        await asyncio.sleep(1)
+        await message_sender.SendMessage(chan, contending_teams_str)
+        await asyncio.sleep(5)
+        home_score = 0
+        away_score = 0
 
-                    for play in results:
-                        time_consumed = play["TimeConsumed"]
-                        home_score = play['HomeScore']
-                        away_score = play['AwayScore']
-                        play_embed = embed_builder.Get_Hockey_Play_Embed(play, home_team_abbr, away_team_abbr, home_url, away_url, home_score, away_score, injury_url)
-                        await message_sender.SendEmbedMessage(chan, embed=play_embed)
-                        await asyncio.sleep(int(time_consumed))
-                    
-                    final_title = "... and that's the game, folks! Thank you for watching!"
-                    final_url = ""
-                    if home_score > away_score:
-                        final_url = home_url
-                    else:
-                        final_url = away_url
-                    final_embed = discord.Embed(colour=discord.Colour.light_gray(),description=contending_teams_str,title=final_title)
-                    final_embed.add_field(name="Final Score", value=final_score, inline=False)
-                    final_embed.set_thumbnail(url=final_url)
-                    await message_sender.SendEmbedMessage(chan, embed=final_embed)
-                    await asyncio.sleep(10)
-                                                
+        for idx, play in enumerate(total_rows):
+            time_consumed = 2
+            outcome = play["Outcome"]
+            if outcome == "Goalie Hold":
+                time_consumed = 5
+            elif outcome == "Shot on Goal":
+                time_consumed = 10
+            elif outcome == "Shootout":
+                time_consumed = 10
+            elif outcome == "EnteringShootout":
+                time_consumed = 10
+            elif outcome == "No One Open":
+                continue
+            home_score = play['HomeTeamScore']
+            away_score = play['AwayTeamScore']
+            play_embed = embed_builder.Get_Hockey_Play_Embed(play, home_team, away_team, home_url, away_url, home_score, away_score, injury_url)
+            await message_sender.SendEmbedMessage(chan, embed=play_embed)
+            await asyncio.sleep(int(time_consumed))
+        
+        final_title = "... and that's the game, folks! Thank you for watching!"
+        final_score = f"{home_score}-{away_score}"
+        final_url = ""
+        if home_score > away_score:
+            final_url = home_url
+        else:
+            final_url = away_url
+        final_embed = discord.Embed(colour=discord.Colour.light_gray(),description=contending_teams_str,title=final_title)
+        final_embed.add_field(name="Final Score", value=final_score, inline=False)
+        final_embed.set_thumbnail(url=final_url)
+        await message_sender.SendEmbedMessage(chan, embed=final_embed)
+        await asyncio.sleep(10)
+                                            
 
-        await chan.send(f"Please tune in on January 18th for more information...")
+    await chan.send(f"Please tune in on January 18th for more information...")

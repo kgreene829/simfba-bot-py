@@ -1811,7 +1811,7 @@ def GetCHLLogo(team):
     elif team == 39:
         return logos.logo_book["MinnesotaState"]
     elif team == 40:
-        return logos.logo_book["NewHampshire"]
+        return logos.logo_book["New_Hampshire"]
     elif team == 41:
         return logos.logo_book["Niagara"]
     elif team == 42:
@@ -1821,7 +1821,7 @@ def GetCHLLogo(team):
     elif team == 44:
         return logos.logo_book["NorthernMichigan"]
     elif team == 45:
-        return logos.logo_book["NotreDame"]
+        return logos.logo_book["Notre_Dame"]
     elif team == 46:
         return logos.logo_book["Ohio_State"]
     elif team == 47:

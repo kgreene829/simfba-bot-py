@@ -8,6 +8,7 @@ import api_requests
 class chl_team(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
+        
     @app_commands.command(name="chl_team", description="Look up a college hockey team")
     async def chl_team(self, interaction: discord.Interaction, team: str):
         upper_input = team.upper()

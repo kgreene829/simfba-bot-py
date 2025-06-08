@@ -1,65 +1,67 @@
+from util import GetHockeyLetterGrade
+
 def GetPriorityFields(data):
     attrList = []
     if data['Position'] == "C":
         attrList = [
         {
           "name": "Agility",
-          "value": data['AgilityGrade'],
+          "value": GetHockeyLetterGrade(data['Agility'],1),
           "inline": True,
         },
         {
           "name": "Faceoff",
-          "value": data['FaceoffsGrade'],
+          "value": GetHockeyLetterGrade(data['Faceoffs'],1),
           "inline": True,
         },
         {
           "name": "Long Shot Accuracy",
-          "value": data['LongShotAccuracyGrade'],
+          "value": GetHockeyLetterGrade(data['LongShotAccuracy'],1),
           "inline": True,
         },
         {
           "name": "Long Shot Power",
-          "value": data['LongShotPowerGrade'],
+          "value": GetHockeyLetterGrade(data['LongShotPower'],1),
           "inline": True,
         },
         {
           "name": "Close Shot Accuracy",
-          "value": data['CloseShotAccuracyGrade'],
+          "value": GetHockeyLetterGrade(data['CloseShotAccuracy'],1),
           "inline": True,
         },
         {
           "name": "Close Shot Power",
-          "value": data['CloseShotPowerGrade'],
+          "value": GetHockeyLetterGrade(data['CloseShotPower'],1),
           "inline": True, 
         },
         {
           "name": "Passing",
-          "value": data['PassingGrade'],
+          "value": GetHockeyLetterGrade(data['Passing'],1),
           "inline": True,
         },
         {
           "name": "Puck Handling",
-          "value": data['PuckHandlingGrade'],
+          "value": GetHockeyLetterGrade(data['PuckHandling'],1),
           "inline": True,
         },
         {
           "name": "Strength",
-          "value": data['StrengthGrade'],
+          "value": GetHockeyLetterGrade(data['Strength'],1),
           "inline": True,
         },
         {
           "name": "Body Checking",
-          "value": data['BodyCheckingGrade'],
+          "value": GetHockeyLetterGrade(data['BodyChecking'],1),
           "inline": True,
         },
         {
           "name": "Stick Checking",
-          "value": data['StickCheckingGrade'],
+          "value": GetHockeyLetterGrade(data['StickChecking'],1),
           "inline": True,
         },
         {
           "name": "Shot Blocking",
-          "value": data['ShotBlockingGrade'],
+          "value": GetHockeyLetterGrade(data['ShotBlocking'],1),
           "inline": True,
         }
         ]
@@ -67,57 +69,57 @@ def GetPriorityFields(data):
          attrList = [
         {
           "name": "Agility",
-          "value": data['AgilityGrade'],
+          "value": GetHockeyLetterGrade(data['Agility'],1),
           "inline": True,
         },
         {
           "name": "Long Shot Accuracy",
-          "value": data['LongShotAccuracyGrade'],
+          "value": GetHockeyLetterGrade(data['LongShotAccuracy'],1),
           "inline": True,
         },
         {
           "name": "Long Shot Power",
-          "value": data['LongShotPowerGrade'],
+          "value": GetHockeyLetterGrade(data['LongShotPower'],1),
           "inline": True,
         },
         {
           "name": "Close Shot Accuracy",
-          "value": data['CloseShotAccuracyGrade'],
+          "value": GetHockeyLetterGrade(data['CloseShotAccuracy'],1),
           "inline": True,
         },
         {
           "name": "Close Shot Power",
-          "value": data['CloseShotPowerGrade'],
+          "value": GetHockeyLetterGrade(data['CloseShotPower'],1),
           "inline": True, 
         },
         {
           "name": "Passing",
-          "value": data['PassingGrade'],
+          "value": GetHockeyLetterGrade(data['Passing'],1),
           "inline": True,
         },
         {
           "name": "Puck Handling",
-          "value": data['PuckHandlingGrade'],
+          "value": GetHockeyLetterGrade(data['PuckHandling'],1),
           "inline": True,
         },
         {
           "name": "Strength",
-          "value": data['StrengthGrade'],
+          "value": GetHockeyLetterGrade(data['Strength'],1),
           "inline": True,
         },
         {
           "name": "Body Checking",
-          "value": data['BodyCheckingGrade'],
+          "value": GetHockeyLetterGrade(data['BodyChecking'],1),
           "inline": True,
         },
         {
           "name": "Stick Checking",
-          "value": data['StickCheckingGrade'],
+          "value": GetHockeyLetterGrade(data['StickChecking'],1),
           "inline": True,
         },
         {
           "name": "Shot Blocking",
-          "value": data['ShotBlockingGrade'],
+          "value": GetHockeyLetterGrade(data['ShotBlocking'],1),
           "inline": True,
         }
         ]
@@ -125,57 +127,57 @@ def GetPriorityFields(data):
         attrList = [
         {
           "name": "Agility",
-          "value": data['AgilityGrade'],
+          "value": GetHockeyLetterGrade(data['Agility'],1),
           "inline": True,
         },
         {
           "name": "Long Shot Accuracy",
-          "value": data['LongShotAccuracyGrade'],
+          "value": GetHockeyLetterGrade(data['LongShotAccuracy'],1),
           "inline": True,
         },
         {
           "name": "Long Shot Power",
-          "value": data['LongShotPowerGrade'],
+          "value": GetHockeyLetterGrade(data['LongShotPower'],1),
           "inline": True,
         },
         {
           "name": "Close Shot Accuracy",
-          "value": data['CloseShotAccuracyGrade'],
+          "value": GetHockeyLetterGrade(data['CloseShotAccuracy'],1),
           "inline": True,
         },
         {
           "name": "Close Shot Power",
-          "value": data['CloseShotPowerGrade'],
+          "value": GetHockeyLetterGrade(data['CloseShotPower'],1),
           "inline": True, 
         },
         {
           "name": "Passing",
-          "value": data['PassingGrade'],
+          "value": GetHockeyLetterGrade(data['Passing'],1),
           "inline": True,
         },
         {
           "name": "Puck Handling",
-          "value": data['PuckHandlingGrade'],
+          "value": GetHockeyLetterGrade(data['PuckHandling'],1),
           "inline": True,
         },
         {
           "name": "Strength",
-          "value": data['StrengthGrade'],
+          "value": GetHockeyLetterGrade(data['Strength'],1),
           "inline": True,
         },
         {
           "name": "Body Checking",
-          "value": data['BodyCheckingGrade'],
+          "value": GetHockeyLetterGrade(data['BodyChecking'],1),
           "inline": True,
         },
         {
           "name": "Stick Checking",
-          "value": data['StickCheckingGrade'],
+          "value": GetHockeyLetterGrade(data['StickChecking'],1),
           "inline": True,
         },
         {
           "name": "Shot Blocking",
-          "value": data['ShotBlockingGrade'],
+          "value": GetHockeyLetterGrade(data['ShotBlocking'],1),
           "inline": True,
         }
         ]
@@ -183,17 +185,22 @@ def GetPriorityFields(data):
         attrList = [
               {
           "name": "Agility",
-          "value": data['AgilityGrade'],
+          "value": GetHockeyLetterGrade(data['Agility'],1),
+          "inline": True,
+        },
+                    {
+          "name": "Strength",
+          "value": GetHockeyLetterGrade(data['Strength'],1),
           "inline": True,
         },
         {
           "name": "Goalkeeping",
-          "value": data['GoalkeepingGrade'],
+          "value": GetHockeyLetterGrade(data['Goalkeeping'],1),
           "inline": True,
         },
         {
           "name": "Goalie Vision",
-          "value": data['GoalieVisionGrade'],
+          "value": GetHockeyLetterGrade(data['GoalieVision'],1),
           "inline": True,
         }
         ]
@@ -204,7 +211,17 @@ def GetPriorityFields(data):
         })
     attrList.insert(0, {
           "name": "Overall",
-          "value": data['OverallGrade'],
+          "value": data['Overall'],
+          "inline": True,
+        })
+    attrList.append({
+          "name": "Stamina",
+          "value": data['Stamina'],
+          "inline": True,
+        })
+    attrList.append({
+          "name": "Injury",
+          "value": data['InjuryRating'],
           "inline": True,
         })
     return attrList

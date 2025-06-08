@@ -4,10 +4,12 @@ from discord import app_commands
 import logos_util
 import id_util
 import api_requests
+import settings
 
 class cfb_flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
+        client.tree.add_command(self.flex_group, guild=settings.GUILDS_ID)
 
     flex_group = app_commands.Group(name="flex", description="Compare wins between different programs")
 

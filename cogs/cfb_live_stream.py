@@ -12,7 +12,7 @@ prime_time = settings.PRIME_TIME
 class FBS_Stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-
+        client.tree.add_command(self.fbs_stream_group, guild=settings.GUILDS_ID)
     fbs_stream_group = app_commands.Group(name="fbs_streams", description="Stream SimCFB FBS Games")
 
     @fbs_stream_group.command(name="thursday", description="The timeslot you'd like to stream")

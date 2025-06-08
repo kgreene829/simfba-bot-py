@@ -5,10 +5,12 @@ from helper import player_builder
 import logos_util
 import id_util
 import api_requests
+import settings
 
 class cfb_player_id_stats(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
+        client.tree.add_command(self.cfb_player_id_group, guild=settings.GUILDS_ID)
 
     cfb_player_id_group = app_commands.Group(name="cfb_player_id", description="CFB Player by ID")
 

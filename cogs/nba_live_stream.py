@@ -11,6 +11,7 @@ int_channel_id = settings.INT_STREAM_CHANNEL
 class NBA_Live_Stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
+        client.tree.add_command(self.nba_stream_group, guild=settings.GUILDS_ID)
 
     nba_stream_group = app_commands.Group(name="nba_streams", description="Stream SimNBA Basketball Games")
 

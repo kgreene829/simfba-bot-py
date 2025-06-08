@@ -5,11 +5,13 @@ from helper import hockey_player_builder
 import logos_util
 import id_util
 import api_requests
+import settings
 
 class chl_player_id(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-
+        client.tree.add_command(self.chl_player_id_group, guild=settings.GUILDS_ID)
+   
     chl_player_id_group = app_commands.Group(name="chl_player_id", description="CHL Player by ID")
 
 

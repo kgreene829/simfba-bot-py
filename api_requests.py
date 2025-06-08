@@ -212,6 +212,17 @@ def StreamFootballGames(league, timeslot, week, isNFL):
         return res.json()
     return False
 
+def StreamHockeyGames(isPro, streamType):
+    req_url = ""
+    if isPro == False:
+        req_url = f"{hck_url}ds/chl/stream/{streamType}/"
+    else:
+        req_url = f"{hck_url}ds/phl/stream/{streamType}/"
+    res = requests.get(f"{req_url}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
 def RegisterFBTeam(isNFL, team_id, user):
     req_url = ""
     if isNFL == False:

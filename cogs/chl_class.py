@@ -4,6 +4,7 @@ from discord import app_commands
 import logos_util
 import id_util
 import api_requests
+import settings
 
 class chl_class(commands.Cog):
     def __init__(self, client: commands.Bot):
