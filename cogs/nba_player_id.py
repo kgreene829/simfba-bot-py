@@ -9,7 +9,6 @@ import settings
 class nba_player_id(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.nba_player_id_group, guild=settings.GUILDS_ID)
 
     nba_player_id_group = app_commands.Group(name="nba_player_id", description="NBA Player by ID")
 

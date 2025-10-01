@@ -10,7 +10,6 @@ import settings
 class cfb_player_name(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.cfb_player_name_group, guild=settings.GUILDS_ID)
 
     cfb_player_name_group = app_commands.Group(name="cfb_player_name", description="CFB Player by Name")
 

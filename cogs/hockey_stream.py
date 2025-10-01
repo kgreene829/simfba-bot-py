@@ -12,7 +12,6 @@ college_u_id = settings.COLLEGE_U_STREAM_CHANNEL
 class CHL_Hockey_Stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.chl_stream_group, guild=settings.GUILDS_ID)
     
     chl_stream_group = app_commands.Group(name="chl_streams", description="Stream SimCHL Games")
     @chl_stream_group.command(name="hck_a", description="The timeslot you'd like to stream")

@@ -6,10 +6,9 @@ import settings
 
 channel_id = settings.FCS_STREAM_CHANNEL
 
-class FCS_Stream(commands.Cog):
+class fcs_live_stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.fcs_stream_group, guild=settings.GUILDS_ID)
 
     fcs_stream_group = app_commands.Group(name="fcs_streams", description="Stream SimCFB FCS Games")
 
@@ -51,4 +50,4 @@ class FCS_Stream(commands.Cog):
             await cfb_stream_builder.stream_fb_game(chan, 'fcs','Saturday Night', input, False)
 
 async def setup(client: commands.Bot):
-    await client.add_cog(FCS_Stream(client))
+    await client.add_cog(fcs_live_stream(client))

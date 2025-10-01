@@ -6,7 +6,6 @@ import settings
 class help(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.help_group, guild=settings.GUILDS_ID)
 
     help_group = app_commands.Group(name="league_help", description="Helpful info by league")
 

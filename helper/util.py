@@ -147,3 +147,22 @@ def GetHockeyLetterGrade(attr, year):
     if attr > 4:
         return "D"
     return "F"
+
+def GetYear(year: int, is_redshirt: bool):
+    open = ""
+    close = ""
+    if is_redshirt:
+        year = year-1
+        open = "("
+        close = ")"
+    if year == 1:
+        return f"{open}Fr{close}"
+    elif year == 2:
+        return f"{open}So{close}"
+    elif year == 3:
+        return f"{open}Jr{close}"
+    elif year == 4:
+        return f"{open}Sr{close}"
+    elif year == 5:
+        return f"{open}Gr{close}"
+    return f"{open}{year}{close}"

@@ -13,7 +13,6 @@ frozen_id = settings.FROZEN_STREAM_CHANNEL
 class PHL_Hockey_Stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.phl_stream_group, guild=settings.GUILDS_ID)
     
     phl_stream_group = app_commands.Group(name="phl_streams", description="Stream SimPHL Games")
     @phl_stream_group.command(name="tsn_a", description="The timeslot you'd like to stream")

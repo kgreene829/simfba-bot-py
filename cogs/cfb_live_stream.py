@@ -9,10 +9,9 @@ big_noon_id = settings.B1G_NOON
 after_dark_id = settings.AFTER_DARK
 prime_time = settings.PRIME_TIME
 
-class FBS_Stream(commands.Cog):
+class cfb_live_stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.fbs_stream_group, guild=settings.GUILDS_ID)
     fbs_stream_group = app_commands.Group(name="fbs_streams", description="Stream SimCFB FBS Games")
 
     @fbs_stream_group.command(name="thursday", description="The timeslot you'd like to stream")
@@ -52,4 +51,4 @@ class FBS_Stream(commands.Cog):
             await cfb_stream_builder.stream_fb_game(chan, 'fbs','Saturday Night', input, False)
 
 async def setup(client: commands.Bot):
-    await client.add_cog(FBS_Stream(client))
+    await client.add_cog(cfb_live_stream(client))

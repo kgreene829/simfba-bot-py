@@ -10,10 +10,9 @@ tbs_channel_id = settings.TBS_STREAM_CHANNEL
 espn_channel_id = settings.ESPN_STREAM_CHANNEL
 espn2_channel_id = settings.ESPN2_STREAM_CHANNEL
 
-class CBB_Stream(commands.Cog):
+class bba_stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.cbb_stream_group, guild=settings.GUILDS_ID)
 
     cbb_stream_group = app_commands.Group(name="bba_streams", description="Stream SimCBB Games")
 
@@ -117,4 +116,4 @@ class CBB_Stream(commands.Cog):
 
 
 async def setup(client: commands.Bot):
-    await client.add_cog(CBB_Stream(client))
+    await client.add_cog(bba_stream(client))

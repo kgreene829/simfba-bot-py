@@ -140,13 +140,13 @@ async def stream_cbb_game(chan, channel: str, week: str, day: str):
                         if type_of_play == "Tipoff" or type_of_play == "FreeThrow":
                             await asyncio.sleep(2)
                         elif type_of_play == "Turnover":
-                            await asyncio.sleep(3)
+                            await asyncio.sleep(2)
                         elif type_of_play == "Score" or type_of_play == "Missed" or type_of_play == "Miss":
                             await asyncio.sleep(4)
                         elif type_of_play == "Shot Clock" or type_of_play == "Out of Bounds" or type_of_play == "Fouled" or type_of_play == "Injury":
-                            await asyncio.sleep(8)
+                            await asyncio.sleep(6)
                         elif type_of_play == "HALFTIME" or type_of_play == "OVERTIME":
-                            await asyncio.sleep(15)
+                            await asyncio.sleep(10)
                         else:
                             await asyncio.sleep(4)
                     
@@ -160,7 +160,7 @@ async def stream_cbb_game(chan, channel: str, week: str, day: str):
                     final_embed.add_field(name="Final Score", value=final_score, inline=False)
                     final_embed.set_thumbnail(url=final_url)
                     await message_sender.SendEmbedMessage(chan, embed=final_embed)
-                    await asyncio.sleep(30)
+                    await asyncio.sleep(20)
                                                 
 
         await chan.send(f"That's all the games for today, thank you for watching!")

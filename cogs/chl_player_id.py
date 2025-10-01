@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 from helper import hockey_player_builder
+from helper.util import GetYear
 import logos_util
 import id_util
 import api_requests
@@ -10,7 +11,6 @@ import settings
 class chl_player_id(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.chl_player_id_group, guild=settings.GUILDS_ID)
    
     chl_player_id_group = app_commands.Group(name="chl_player_id", description="CHL Player by ID")
 
@@ -22,11 +22,12 @@ class chl_player_id(commands.Cog):
             if data == False:
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
+                year = GetYear(data['Year'], data['IsRedshirt'])
                 title = f"{data['FirstName']} {data['LastName']} {data['PlayerID']}"
                 if {data['City']} == {data['State']}:
-                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {year} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
                 else:
-                    desc = f"{data['Stars']} Star {data['Year']} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {year} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
                 attrlist = hockey_player_builder.GetPriorityFields(data)
                 team_id = id_util.GetCollegeHockeyTeamID(data['Team'].upper())
                 logo_url = logos_util.GetCHLLogo(team_id)
@@ -52,26 +53,13 @@ class chl_player_id(commands.Cog):
                 await interaction.response.send_message(f"Could not find player based on the provided id: {id}")
             else:
                 stats = data["CollegeStats"]
-                year = data["Year"]
-                open = ""
-                close = ""
-                if data["IsRedshirt"] == True:
-                    year = year-1
-                    open = "("
-                    close = ")"
-                if year == 1:
-                    year = "Fr"
-                elif year == 2:
-                    year = "So"
-                elif year == 3:
-                    year = "Jr"
-                elif year == 4:
-                    year = "Sr"
+                year = GetYear(data['Year'], data['IsRedshirt'])
+
                 title = f"{data['FirstName']} {data['LastName']} {data['Position']} {data['PlayerID']}"
                 if {data['City']} == {data['State']}:
-                    desc = f"{data['Stars']} Star {open}{year}{close} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {year} {data['Archetype']} {data['Position']} from {data['City']}, {data['Country']}"
                 else:
-                    desc = f"{data['Stars']} Star {open}{year}{close} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
+                    desc = f"{data['Stars']} Star {year} {data['Archetype']} {data['Position']} from {data['City']}, {data['State']}, {data['Country']}"
                 team_id = id_util.GetCollegeHockeyTeamID(data['Team'].upper())
                 logo_url = logos_util.GetCHLLogo(team_id)
                 embed = discord.Embed(colour=discord.Colour.gold(),
@@ -124,7 +112,7 @@ class chl_player_id(commands.Cog):
                         embed.add_field(name="Game Winning Goals", value=stats["GameWinningGoals"])
                         embed.add_field(name="Plus/Minus", value=stats["PlusMinus"])
                         embed.add_field(name="Shots", value=stats["Shots"])
-                        embed.add_field(name="Shooting Percentage", value=stats["ShootingPercentage"])
+                        embed.add_field(name="Shooting Percentage", value=(stats["ShootingPercentage"]))
                         embed.add_field(name="Shots Blocked", value=stats["ShotsBlocked"])
                         embed.add_field(name="Body Checks", value=stats["BodyChecks"])
                         embed.add_field(name="Stick Checks", value=stats["StickChecks"])

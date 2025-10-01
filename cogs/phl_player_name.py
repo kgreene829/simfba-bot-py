@@ -10,7 +10,6 @@ import settings
 class phl_player_name(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.phl_player_name_group, guild=settings.GUILDS_ID)
 
     phl_player_name_group = app_commands.Group(name="phl_player_name", description="PHL Player by Name")
 

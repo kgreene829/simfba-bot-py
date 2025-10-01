@@ -9,7 +9,6 @@ channel_id = settings.NFL_STREAM_CHANNEL
 class NFL_Live_Stream(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.nfl_stream_group, guild=settings.GUILDS_ID)
 
     nfl_stream_group = app_commands.Group(name="nfl_streams", description="Stream SimNFL Games")
 

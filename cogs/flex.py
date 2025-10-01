@@ -6,10 +6,9 @@ import id_util
 import api_requests
 import settings
 
-class cfb_flex(commands.Cog):
+class flex(commands.Cog):
     def __init__(self, client: commands.Bot):
         self.client = client
-        client.tree.add_command(self.flex_group, guild=settings.GUILDS_ID)
 
     flex_group = app_commands.Group(name="flex", description="Compare wins between different programs")
 
@@ -321,4 +320,4 @@ class cfb_flex(commands.Cog):
 
 
 async def setup(client: commands.Bot):
-    await client.add_cog(cfb_flex(client))
+    await client.add_cog(flex(client))

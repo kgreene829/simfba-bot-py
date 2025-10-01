@@ -118,4 +118,4 @@ async def stream_hockey_game(chan, channel: str, league: str):
         await asyncio.sleep(10)
                                             
 
-    await chan.send(f"Please tune in on January 18th for more information...")
+    await chan.send(f"That's all for today's games, folks!")
