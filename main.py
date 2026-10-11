@@ -27,10 +27,12 @@ class MyClient(commands.Bot):
         synced_global = await self.tree.sync()
         print(f'Global Slash CMDs Synced: {len(synced_global)}')
         
-        # Also sync to your specific guild for immediate testing
-        # self.tree.copy_global_to(guild=settings.GUILDS_ID)
-        # synced_guild = await self.tree.sync(guild=settings.GUILDS_ID)
-        # print(f'Guild Slash CMDs Synced: {len(synced_guild)}')
+        # Remove guild-scoped copies left over from earlier guild syncs; they
+        # show up as duplicates of the global commands.
+        guild = settings.GUILDS_ID
+        self.tree.clear_commands(guild=guild)
+        removed_guild = await self.tree.sync(guild=guild)
+        print(f'Guild Slash CMDs remaining for {guild.id}: {len(removed_guild)}')
         
         print("Bot setup completed!")
         

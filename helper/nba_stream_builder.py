@@ -114,7 +114,7 @@ async def stream_game(chan, channel: str, week: str, day: str, league: str):
                 ad_title = util.AdTitleText(ad)
                 ad_description = util.AdDescriptionText(ad)
                 ad_embed = discord.Embed(colour=discord.Colour.light_gray(), title=ad_title, description=ad_description)
-                ad_embed.set_thumbnail(url=util.GetAdUrl(ad))
+                ad_embed.set_thumbnail(url=logos_util.GetAd(ad))
                 await message_sender.SendEmbedMessage(chan, embed=ad_embed)
                 await asyncio.sleep(5)
         final_title = "... and that's the game, folks! Thank you for watching!"
