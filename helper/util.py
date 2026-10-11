@@ -117,36 +117,45 @@ def AnnouncerIntroText(announcer: str, ht: str, at: str, league: str, stadium: s
     return announcer_intro_book[announcer]
 
 def PickAd():
-    base_list=['MHF', 'MDP', 'BG', 'Hydrate', 'SimCFB', 'SimNFL', 'SimCHL', 'SimPHL', 'SimCBL', 'SimMLB', 'NN', 'DJBC', 'MG', 'DTH', 'LTF', 'FF']
+    base_list=['MHF', 'MDP', 'BG', 'Hydrate', 'SimCFB', 'SimNFL', 'SimCHL', 'SimPHL', 'SimCBL', 'SimMLB', 'NN', 'DJBC', 
+               'MG', 'DTH', 'LTF', 'FF', 'PD', 'Protection', 
+               'SimDivers', 'Crootsmas_1', 'TurkeyTrot', 'Tulane', 'Bread']
     return random.choice(base_list)
 
 def AdTitleText(ad):
     ad_titles = {
-        'MHF': "Matt Howard Foundation",
-        'MDP': "Mad Dog Podcast",
-        'BG': "Boat Game",
-        'Hydrate': "Been watching streams all day?",
-        'SimCFB': "SimCFB",
-        'SimNFL': "SimNFL",
-        'SimCHL': "SimCHL",
-        'SimPHL': "SimPHL",
-        'SimCBL': "SimCBL",
-        'SimMLB': "SimMLB",
-        'NN': "Niang Noodles",
-        'DJBC': "DJ Bison Concert",
-        'MG': "Midnight Garden",
-        'DTH': "Down The Hatch",
-        'LTF': "Kochevnik",
-        'FF': "Detective Schnauzer Tom Hibble in: Faster than Fetch"
+        'MHF': "AD: Matt Howard Foundation",
+        'MDP': "AD: Mad Dog Podcast",
+        'BG': "AD: Boat Game",
+        'Hydrate': "AD: Been watching streams all day?",
+        'SimCFB': "AD: SimCFB",
+        'SimNFL': "AD: SimNFL",
+        'SimCHL': "AD: SimCHL",
+        'SimPHL': "AD: SimPHL",
+        'SimCBL': "AD: SimCBL",
+        'SimMLB': "AD: SimMLB",
+        'NN': "AD: Niang Noodles",
+        'DJBC': "AD: DJ Bison Concert",
+        'MG': "AD: Midnight Garden",
+        'DTH': "AD: Down The Hatch",
+        'LTF': "AD: Kochevnik",
+        'FF': "AD: Detective Schnauzer Tom Hibble in: Faster than Fetch",
+        'PD': "AD: Paint Drying Stream",
+        'Protection': "AD: Protection by Kotex",
+        'SimDivers': "AD: SimDivers",
+        'Crootsmas_1': "AD: Crootsmas",
+        'TurkeyTrot': "AD: Turkey Trot",
+        'Tulane': "AD: Very passionate fan, eh?",
+        'Bread': "AD: Are you bready?"
     }
     return ad_titles.get(ad, "Unknown Ad")
 
 def AdDescriptionText(ad):
     ad_descriptions = {
-        'MHF': "Support the Matt Howard Foundation and help make a difference for a QB in need.",
+        'MHF': "Tired of seeing QBs throw their career off the field? Support the Matt Howard Foundation and help make a difference for a QB in need.",
         'MDP': "Tune in to the Mad Dog Podcast every MWF at 8pm ET for the latest on Seminoles!",
-        'BG': "Explore the Southern Seas today in Boat Game!",
-        'Hydrate': "Stay hydrated while watching streams all day.",
+        'BG': "Explore the Southern Seas today in Boat Game! Travel from island to island and uncover hidden treasures and fish to your hearts delight! Coming soon to a video game console near you.",
+        'Hydrate': "Are you glued to your phone? Are you constantly checking discord to see how your team is performing in the sim? Introducing: staying hydrated! Drink plenty of water throughout the day to keep hydrated. Staying hydrated has numerous benefits for your health and focus. Staying hydrated will not impact your team's performance in the sim but it will help you be there to support your team. Your team benefits, and so do you. Water. Drink more today.",
         'SimCFB': "Think you have what it takes to beat Tennessee? Experience the excitement of SimCFB!",
         'SimNFL': "Catch all the action in the SimNFL!",
         'SimCHL': "Ready to take the ice? Experience the excitement of SimCHL!",
@@ -156,9 +165,16 @@ def AdDescriptionText(ad):
         'NN': "Savor the delicious Niang Noodles now in Pullman, Washington!",
         'DJBC': "Don't miss the World Tour DJ Bison Concert, coming to a city near you!",
         'MG': "A tale of war, friendship, and a love that defies empires. Venture with a princess through a kingdom under fire to the Midnight Garden.",
-        'DTH': "Dwelve through dungeons with your friends today in Down the Hatch!",
-        'LTF': "Find the city. Survive the cold. Light the fires. Coming soon.",
-        'FF': "In the thrilling case of a lifetime, join Detective Tom Hibble in: Faster than Fetch."
+        'DTH': "Dwelve through dungeons with your friends today in Down the Hatch! Coming soon to a video game console near you.",
+        'LTF': "Find the city. Survive the cold. Light the fires. Coming soon to video game console near you.",
+        'FF': "In the thrilling case of a lifetime, join Detective Tom Hibble in: Faster than Fetch.",
+        'PD': "Come watch the excitement of paint drying on a wall on this award-winning twitch stream!",
+        'Protection': "Is your team often going to the red zone? Is their offense moving so fast you aren't sure that you can keep up? Ensure your safety and comfort with Protection by Kotex. Because a strong offense, shouldn't leave you unprepared.",
+        'SimDivers': "Dive into the world of SimDivers and protect the sim from bugs and extraterrestrial threats!",
+        'Crootsmas_1': "Every season, thousands of croots go to college without a scholarship. This can impact their well-being and prospects to life outside of the sim. This crootsmas, give a scholarship to a croot in need. A scholarship for every athlete benefits the sport, and the sim.",
+        'TurkeyTrot': "Lace up this Thanksgiving for our next Turkey Trot! Give thanks and root on your favorite turkey as they go through several races around the track and eventually onto your table! Sign up today!",
+        'Tulane': "Discover strong, longer-lasting bedroom furniture at your local Ikea today. For sports fans right now, and for future sports fans.",
+        'Bread': "AD: Tired of corn? Ready for a food revolution? Consider bread today! Bread is what makes every meal complete. It kneads no introduction, and it rises to every occasion. There are no dough-overs and every slice is a new beginning. Please buy bread from your local grocer today. Warning: May cause excessive deliciousness and sudden cravings for sandwiches."
     }
     return ad_descriptions.get(ad, "Unknown Ad")
 

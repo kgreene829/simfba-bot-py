@@ -727,7 +727,7 @@ logo_book = {
 ad_book = {
     'MHF': f"{ad_url}/matt_howard_foundation.jpg",
     'MDP': f"{ad_url}/MadDogPodcast.png",
-    'BG': f"{ad_url}/BoatGame.png",
+    'BG': f"{ad_url}/BoatGame.jpg",
     'Hydrate': f"{ad_url}/WaterIntoGlass.jpg",
     'SimCFB': f"{icon_url}/simcfb.webp",
     'SimNFL': f"{icon_url}/simnfl.webp",
@@ -740,7 +740,14 @@ ad_book = {
     'MG': f"{ad_url}/MidnightGarden.png",
     'DTH': f"{ad_url}/DownTheHatch.png",
     'LTF': f"{ad_url}/Kochevnik.png",
-    'FF': f"{ad_url}/DetectiveTomHibble.png"
+    'FF': f"{ad_url}/DetectiveTomHibble.jpg",
+    'PD': f"{ad_url}/paint_drying.jpg",
+    'Protection': f"{ad_url}/ProtectionByKotex.jpg",
+    'SimDivers': f"{ad_url}/SimDivers.png",
+    'Crootsmas_1': f"{ad_url}/CrootsmasAd1.png",
+    'TurkeyTrot': f"{ad_url}/TurkeyTrot.png",
+    'Tulane': f"{ad_url}/TulaneFansOops.png",
+    'Bread': f"{ad_url}/bread_ad.jpg"
 }
 
 announcer_book = {
