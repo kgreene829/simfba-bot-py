@@ -1,5 +1,26 @@
 import random
 
+def IsInappropriate(res: str):
+    slang_dict = {
+        "PENIS": True,
+        "PISS": True,
+        "FUCK": True,
+        "SHIT": True,
+        "CUNT": True,
+        "DICK": True,
+        "ASS": True,
+        "BASTARD": True,
+        "SLUT": True,
+        "WHORE": True,
+        "BUTT": True,
+        "TITS": True,
+        "CUM": True,
+        "BOOBS": True,
+        "VAGINA": True,
+        "COCK": True
+    }
+    return any(word in res.upper() for word in slang_dict)
+
 def IsPenalty(res: str):
     sub_str = res[0:7]
     return sub_str == "PENALTY"

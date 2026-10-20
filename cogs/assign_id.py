@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-from helper import player_builder
+from helper import player_builder, util
 import logos_util
 import id_util
 import api_requests
@@ -13,6 +13,10 @@ class assign_id(commands.Cog):
     async def cfb_register(self, interaction: discord.Interaction, team: str):
         try:
             upper_input = team.upper()
+            is_inappropriate = util.IsInappropriate(upper_input)
+            if is_inappropriate:
+                await interaction.response.send_message("The team name you entered is inappropriate. Get your mind out of the gutter.")
+                return
             team_id = id_util.GetCollegeFootballTeamID(upper_input)
             logo_url = logos_util.GetCFBLogo(team_id)
 
@@ -37,6 +41,10 @@ class assign_id(commands.Cog):
     async def nfl_register(self, interaction: discord.Interaction, team: str):
         try:
             upper_input = team.upper()
+            is_inappropriate = util.IsInappropriate(upper_input)
+            if is_inappropriate:
+                await interaction.response.send_message("The team name you entered is inappropriate. Get your mind out of the gutter.")
+                return
             team_id = id_util.GetNFLTeamID(upper_input)
             logo_url = logos_util.GetNFLLogo(team_id)
 
@@ -61,6 +69,10 @@ class assign_id(commands.Cog):
     async def cbb_register(self, interaction: discord.Interaction, team: str, username: str):
         try:
             upper_input = team.upper()
+            is_inappropriate = util.IsInappropriate(upper_input)
+            if is_inappropriate:
+                await interaction.response.send_message("The team name you entered is inappropriate. Get your mind out of the gutter.")
+                return
             team_id = id_util.GetCollegeBasketballTeamID(upper_input)
             logo_url = logos_util.GetCBBLogo(team_id)
 
@@ -85,6 +97,10 @@ class assign_id(commands.Cog):
     async def nba_register(self, interaction: discord.Interaction, team: str, username: str):
         try:
             upper_input = team.upper()
+            is_inappropriate = util.IsInappropriate(upper_input)
+            if is_inappropriate:
+                await interaction.response.send_message("The team name you entered is inappropriate. Get your mind out of the gutter.")
+                return
             team_id = id_util.GetNBATeamID(upper_input)
             logo_url = logos_util.GetNBALogo(team_id)
 
@@ -109,6 +125,10 @@ class assign_id(commands.Cog):
     async def chl_register(self, interaction: discord.Interaction, team: str):
         try:
             upper_input = team.upper()
+            is_inappropriate = util.IsInappropriate(upper_input)
+            if is_inappropriate:
+                await interaction.response.send_message("The team name you entered is inappropriate. Get your mind out of the gutter.")
+                return
             team_id = id_util.GetCollegeHockeyTeamID(upper_input)
             logo_url = logos_util.GetCHLLogo(team_id)
 
@@ -133,6 +153,10 @@ class assign_id(commands.Cog):
     async def phl_register(self, interaction: discord.Interaction, team: str):
         try:
             upper_input = team.upper()
+            is_inappropriate = util.IsInappropriate(upper_input)
+            if is_inappropriate:
+                await interaction.response.send_message("The team name you entered is inappropriate. Get your mind out of the gutter.")
+                return
             team_id = id_util.GetPHLTeamID(upper_input)
             logo_url = logos_util.GetPHLLogo(team_id)
 
