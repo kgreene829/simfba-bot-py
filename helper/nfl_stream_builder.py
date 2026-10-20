@@ -2,7 +2,7 @@ import discord
 import os
 import csv
 from api_requests import RevealFBGameResultsOnInterface
-from helper import embed_builder
+from helper import embed_builder, message_sender, util
 import constants
 import logos_util
 import asyncio
@@ -83,6 +83,14 @@ async def stream_game(chan, channel: str, week: str):
                             play_embed = embed_builder.Get_FBA_Play_Embed(play, home_team_name, away_team_name, home_url, away_url, home_score, away_score)
                             await chan.send(embed=play_embed)
                             await asyncio.sleep(8)
+                            if play["PlayType"] == "FG" or play["PlayType"] == "XP":
+                                ad = util.PickAd()
+                                ad_title = util.AdTitleText(ad)
+                                ad_description = util.AdDescriptionText(ad)
+                                ad_embed = discord.Embed(colour=discord.Colour.light_gray(), title=ad_title, description=ad_description)
+                                ad_embed.set_thumbnail(url=logos_util.GetAd(ad))
+                                await message_sender.SendEmbedMessage(chan, embed=ad_embed)
+                                await asyncio.sleep(5)
                         
                         final_title = "... and that's the game, folks! Thank you for watching!"
                         final_url = ""

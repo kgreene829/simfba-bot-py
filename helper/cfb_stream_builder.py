@@ -144,11 +144,19 @@ async def stream_fb_game(chan, league: str, timeslot: str, isNFL):
                 else:
                     if is_redzone == True:
                         await message_sender.SendMessage(chan, "REDZONE ALERT: <@&1235669913478365244>")
-                        await asyncio.sleep(5)
+                        await asyncio.sleep(3)
 
                     play_embed = embed_builder.Get_FBA_Play_Embed(play, home_team, away_team, home_url, away_url, home_score, away_score, s)
                     await message_sender.SendEmbedMessage(chan, play_embed)
                     await asyncio.sleep(8)
+                    if play["PlayType"] == "FG" or play["PlayType"] == "XP":
+                        ad = util.PickAd()
+                        ad_title = util.AdTitleText(ad)
+                        ad_description = util.AdDescriptionText(ad)
+                        ad_embed = discord.Embed(colour=discord.Colour.light_gray(), title=ad_title, description=ad_description)
+                        ad_embed.set_thumbnail(url=logos_util.GetAd(ad))
+                        await message_sender.SendEmbedMessage(chan, embed=ad_embed)
+                        await asyncio.sleep(5)
         
         final_score = f"{home_label}: {f_home_score} | {away_label}: {f_away_score}"
         final_title = "... and that's the game, folks! Thank you for watching!"
