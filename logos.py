@@ -747,7 +747,8 @@ ad_book = {
     'Crootsmas_1': f"{ad_url}/CrootsmasAd1.png",
     'TurkeyTrot': f"{ad_url}/TurkeyTrot.png",
     'Tulane': f"{ad_url}/TulaneFansOops.png",
-    'Bread': f"{ad_url}/bread_ad.jpg"
+    'Bread': f"{ad_url}/bread_ad.jpg",
+    'SimSN TCG': f"{ad_url}/simsn_tcg_ad.jpg"
 }
 
 announcer_book = {

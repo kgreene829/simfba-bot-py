@@ -1,5 +1,26 @@
 import random
 
+def IsInappropriate(res: str):
+    slang_dict = {
+        "PENIS": True,
+        "PISS": True,
+        "FUCK": True,
+        "SHIT": True,
+        "CUNT": True,
+        "DICK": True,
+        "ASS": True,
+        "BASTARD": True,
+        "SLUT": True,
+        "WHORE": True,
+        "BUTT": True,
+        "TITS": True,
+        "CUM": True,
+        "BOOBS": True,
+        "VAGINA": True,
+        "COCK": True
+    }
+    return any(word in res.upper() for word in slang_dict)
+
 def IsPenalty(res: str):
     sub_str = res[0:7]
     return sub_str == "PENALTY"
@@ -119,7 +140,7 @@ def AnnouncerIntroText(announcer: str, ht: str, at: str, league: str, stadium: s
 def PickAd():
     base_list=['MHF', 'MDP', 'BG', 'Hydrate', 'SimCFB', 'SimNFL', 'SimCHL', 'SimPHL', 'SimCBL', 'SimMLB', 'NN', 'DJBC', 
                'MG', 'DTH', 'LTF', 'FF', 'PD', 'Protection', 
-               'SimDivers', 'Crootsmas_1', 'TurkeyTrot', 'Tulane', 'Bread']
+               'SimDivers', 'Crootsmas_1', 'TurkeyTrot', 'Tulane', 'Bread', 'SimSN TCG']
     return random.choice(base_list)
 
 def AdTitleText(ad):
@@ -146,7 +167,8 @@ def AdTitleText(ad):
         'Crootsmas_1': "AD: Crootsmas",
         'TurkeyTrot': "AD: Turkey Trot",
         'Tulane': "AD: Very passionate fan, eh?",
-        'Bread': "AD: Are you bready?"
+        'Bread': "AD: Are you bready?",
+        'SimSN TCG': "AD: SimSN TCG"
     }
     return ad_titles.get(ad, "Unknown Ad")
 
@@ -174,7 +196,8 @@ def AdDescriptionText(ad):
         'Crootsmas_1': "Every season, thousands of croots go to college without a scholarship. This can impact their well-being and prospects to life outside of the sim. This crootsmas, give a scholarship to a croot in need. A scholarship for every athlete benefits the sport, and the sim.",
         'TurkeyTrot': "Lace up this Thanksgiving for our next Turkey Trot! Give thanks and root on your favorite turkey as they go through several races around the track and eventually onto your table! Sign up today!",
         'Tulane': "Discover strong, longer-lasting bedroom furniture at your local Ikea today. For sports fans right now, and for future sports fans.",
-        'Bread': "AD: Tired of corn? Ready for a food revolution? Consider bread today! Bread is what makes every meal complete. It kneads no introduction, and it rises to every occasion. There are no dough-overs and every slice is a new beginning. Please buy bread from your local grocer today. Warning: May cause excessive deliciousness and sudden cravings for sandwiches."
+        'Bread': "Tired of corn? Ready for a food revolution? Consider bread today! Bread is what makes every meal complete. It kneads no introduction, and it rises to every occasion. There are no dough-overs and every slice is a new beginning. Please buy bread from your local grocer today. Warning: May cause excessive deliciousness and sudden cravings for sandwiches.",
+        'SimSN TCG': "In 2026, SimSN: TCG showed avid sports fans how to play trading card games like never before. Build your deck with athletes across four major sports, and rise to the top to become the SimSN Champion!",
     }
     return ad_descriptions.get(ad, "Unknown Ad")
 
