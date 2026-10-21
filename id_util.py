@@ -6,6 +6,7 @@ chl_abbrevations_json_file = os.path.join("./chl_abbreviations.json")
 nfl_abbrevations_json_file = os.path.join("./nfl_abbreviations.json")
 nba_abbrevations_json_file = os.path.join("./nba_abbreviations.json")
 phl_abbrevations_json_file = os.path.join("./phl_abbreviations.json")
+cbl_abbreviations_json_file = os.path.join("./cbl_abbreviations.json")
 
 def GetCollegeHockeyTeamID(abbr):
     with open(chl_abbrevations_json_file, 'r') as f:
@@ -54,6 +55,15 @@ def GetNBATeamID(abbr):
 
 def GetPHLTeamID(abbr):
     with open(phl_abbrevations_json_file, 'r') as f:
+        data = json.load(f)
+        if abbr in data:
+            return data[abbr]
+        else:
+            no_team = "/"
+            return no_team
+
+def GetCollegeBaseballTeamID(abbr):
+    with open(cbl_abbreviations_json_file, 'r') as f:
         data = json.load(f)
         if abbr in data:
             return data[abbr]
