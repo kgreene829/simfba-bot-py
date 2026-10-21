@@ -1,7 +1,7 @@
 import discord
 import os
 import csv
-from api_requests import StreamBasketballGames
+from api_requests import RevealBBGameResultsOnInterface, StreamBasketballGames
 from helper import embed_builder, message_sender, util
 import constants
 import logos_util
@@ -129,7 +129,7 @@ async def stream_game(chan, channel: str, week: str, day: str, league: str):
         final_embed.add_field(name="Syncing results...", value="Check the Interface for results & a post-game discussion!", inline=False)
         final_embed.set_thumbnail(url=final_url)
         await message_sender.SendEmbedMessage(chan, embed=final_embed)
-        # RevealHCKGameResultsOnInterface(is_pro, game["GameID"])
+        RevealBBGameResultsOnInterface(is_pro, game["GameID"])
 
         await asyncio.sleep(10)
                                             

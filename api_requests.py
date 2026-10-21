@@ -256,6 +256,19 @@ def RevealHCKGameResultsOnInterface(isPro, gameID):
         return res.json()
     return False
 
+def RevealBBGameResultsOnInterface(isPro, gameID):
+    req_url = ""
+    if isPro == False:
+        req_url = f"{bba_url}ds/cbb/reveal/results/{gameID}/"
+    else:
+        req_url = f"{bba_url}ds/nba/reveal/results/{gameID}/"
+    res = requests.get(f"{req_url}")
+    if res.status_code == 200:
+        if res.content:
+            return res.json()
+        return True
+    return False
+
 def RevealFBGameResultsOnInterface(isPro, gameID):
     req_url = ""
     if isPro == False:
