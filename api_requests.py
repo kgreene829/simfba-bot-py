@@ -7,7 +7,44 @@ bba_test_url = "http://localhost:8081/api/"
 bba_url = "https://simnba.azurewebsites.net/api/"
 hck_test_url = "http://localhost:8080/api/"
 hck_url = "https://simhck-hqd2bme9gse5d7g9.westus-01.azurewebsites.net/api/"
+bas_url = "https://simbaseball.afwh.app/api/v1/"
 # bba_url = bba_test_url
+
+def GetBaseballTeam(team):
+    res = requests.get(f"{bas_url}teams/{team}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetBaseballPlayer_id(id):
+    res = requests.get(f"{bas_url}stats/player/{id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetBaseballPlayer_id2(id):
+    res = requests.get(f"{bas_url}scouting/player/{id}?org_id=6&league_year_id=1")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetCollegeBaseballClass(year, id):
+    res = requests.get(f"{bas_url}recruiting/commitments?league_year_id={year}&org_id={id}")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetBaseballCroot(id, year):
+    res = requests.get(f"{bas_url}recruiting/player/{id}?league_year_id={year}&viewing_org_id=142")
+    if res.status_code == 200:
+        return res.json()
+    return False
+
+def GetBaseballCrootCommitted(id, year, org=142):
+    res = requests.get(f"{bas_url}scouting/player/{id}?league_year_id={year}&org_id={org}")
+    if res.status_code == 200:
+        return res.json()
+    return False
 
 def GetCollegeBasketballTeam(id):
     res = requests.get(f"{bba_url}ds/cbb/team/{id}")
